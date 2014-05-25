@@ -1,0 +1,204 @@
+LOBBY LOSTLOBBY
+0	servername (Mikesbeast)
+1	Context 
+2	EventID (2028)
+3	PlayerID (-1)
+4	PlayerName 
+5	DateTime ()
+6	LobbyIP (166.102.238.123)
+
+LOBBY CONNECTED
+0	servername (Mikesbeast)
+1	Context 
+2	EventID (2033)
+3	PlayerID (-1)
+4	PlayerName 
+5	DateTime ()
+6	LobbyIP (166.102.238.123)
+
+LOBBY DISCONNECTING
+0	servername (Mikesbeast)
+1	Context 
+2	EventID (2034)
+3	PlayerID (-1)
+4	PlayerName 
+5	DateTime ()
+6	LobbyIP (166.102.238.123)
+
+LOBBY DISCONNECTED
+0	servername (Mikesbeast)
+1	Context 
+2	EventID (2035)
+3	PlayerID (-1)
+4	PlayerName 
+5	DateTime ()
+6	LobbyIP (166.102.238.123)
+
+GAME CREATED
+0	servername (Mikesbeast)
+1	Context (U0529232006000200)
+2	EventID (4040)
+3	GameNumber (11)
+4	GameName (Mike's Game)
+5	DateTime ()
+
+GAME DESTROYED
+0	servername (Mikesbeast)
+1	Context (U0529232006000200)
+2	EventID (4041)
+3	GameNumber (2)
+4	GameName (Mike's Game)
+5	DateTime ()
+
+TEAM INFO CHANGE
+0	servername (Mikesbeast)
+1	Context (U0529233158000800)
+2	EventID (4062)
+3	TeamID (12)
+4	OldTeamName (Team 1)
+5	DateTime ()
+6	GameID (10)
+7	GameName (Mike's Game)
+8	NewTeamName (BiosTeam)
+
+GAME STARTED
+0	servername (Mikesbeast)
+1	Context (U0529232006000200)
+2	EventID (2029)
+3	GameNumber (11)
+4	GameName (Mike's Game)
+5	DateTime ()
+
+GAME ENDED
+0	servername (Mikesbeast)
+1	Context (...)
+2	EventID (2030)
+3	GameID
+4	
+5	DateTime ()
+6	Message
+7	WinningTeamID
+8	WinningTeamName
+
+GAME OVER
+0	servername (Mikesbeast)
+1	Context (U0529232006000200)
+2	EventID (2031)
+3	GameNumber (11)
+4	GameName (Mike's Game)
+5	DateTime ()
+
+CHAT MESSAGE
+0	servername (Mikesbeast)
+1	Context (U0529232006000200)
+2	EventID (4030)
+3	-1
+4	SpeakerName
+5	DateTime ()
+6	CommandID
+7	GameNumber
+8	Text
+9	TargetName
+10	TargetID
+11	ChatType
+12	VoiceID
+
+PLAYER DROPPED
+0	servername (Mikesbeast)
+1	Context (U0529232006000200)
+2	EventID (2004)
+3	-1
+4	PlayerName
+5	DateTime ()
+
+LOGIN GAME
+0	servername (Mikesbeast)
+1	Context (U0529232006000200)
+2	EventID (4050)
+3	PlayerID
+4	PlayerName
+5	DateTime ()
+6	GameID
+
+LOGOUT GAME
+0	servername (Mikesbeast)
+1	Context (U0529232006000200)
+2	EventID (4051)
+3	PlayerID
+4	PlayerName
+5	DateTime ()
+6	GameID
+7	Booter (or "")
+
+JOIN TEAM
+0	servername (Mikesbeast)
+1	Context (U0529232006000200)
+2	EventID (4060)
+3	PlayerID
+4	PlayerName
+5	DateTime ()
+6	GameID
+7	TeamID
+8	TeamName
+
+LEAVE TEAM
+0	servername (Mikesbeast)
+1	Context (U0529232006000200)
+2	EventID (4061)
+3	PlayerID
+4	PlayerName
+5	DateTime ()
+6	GameID
+7	TeamID
+8	TeamName
+9	Booter (or "")
+
+SHIP KILLED
+0	servername (Mikesbeast)
+1	Context (U0529232006000200)
+2	EventID (302)
+3	PlayerID
+4	PlayerName
+5	DateTime ()
+6	Unknown (Time to kill?)
+7	KillerID
+8	KillerName
+9	MissionID
+10	Vector1 (Killed's Position?)
+11	Vector2 (Killer's Position?)
+12	IsShip (1 if lifepod)
+
+STATION CREATED
+0	servername (Mikesbeast)
+1	Context (U0529232006000200)
+2	EventID (201)
+3	
+4	
+5	DateTime ()
+6	GameID
+7	StationName
+8	TeamID
+9	TeamName
+
+STATION DELETED
+0	servername (Mikesbeast)
+1	Context (U0529232006000200)
+2	EventID (202)
+3	KillerID
+4	KillerName
+5	DateTime ()
+6	GameID
+7	TeamID
+8	KilledTeamName
+9	StationName
+
+STATION CAPTURED
+0	servername (Mikesbeast)
+1	Context (U0529232006000200)
+2	EventID (202)
+3	CapturerID
+4	CapturerName
+5	DateTime ()
+6	GameID
+7	CapturedTeamName
+8	CapturedStationName

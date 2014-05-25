@@ -1,0 +1,862 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TAGCore</name>
+    </assembly>
+    <members>
+        <member name="T:FreeAllegiance.Tag.ManualUpdateDelegate">
+            <summary>
+            A delegate used to pass the update command to the TAG project
+            </summary>
+        </member>
+        <member name="T:FreeAllegiance.Tag.TagUpdate">
+            <summary>
+            Provides services to check for updates to TAG, and initiate an update cycle
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.TagUpdate.UpdateAvailable">
+            <summary>
+            Checks to see if updates to TAG are available
+            </summary>
+            <returns>True if updates are available. False if TAG is up to date.</returns>
+        </member>
+        <member name="M:FreeAllegiance.Tag.TagUpdate.NeedsUpdating(System.String,System.String)">
+            <summary>
+            Determines if the specified file is out of date or not
+            </summary>
+            <param name="filename">The filename to check</param>
+            <param name="version">The newest version of the file</param>
+            <returns>True if the local file is older than version
+            		False if the local file is the same or newer than version</returns>
+        </member>
+        <member name="M:FreeAllegiance.Tag.TagUpdate.IsAbleToUpdate">
+            <summary>
+            Determines if TAG can update. If any games are in progress, TAG cannot update
+            </summary>
+            <returns>True if no games are in progress, false if any game is running</returns>
+        </member>
+        <member name="M:FreeAllegiance.Tag.TagUpdate.InitiateUpdate">
+            <summary>
+            Triggers launching TAGUpdate.exe, and shutting TAG down
+            </summary>
+        </member>
+        <member name="E:FreeAllegiance.Tag.TagUpdate.UpdateTriggeredEvent">
+            <summary>
+            An event used to signal that a manual update was triggered
+            </summary>
+        </member>
+        <member name="T:FreeAllegiance.Tag.ReconnectTimer">
+            <summary>
+            Handles TAG's reconnection attempts to Allsrv
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.ReconnectTimer.Initialize(System.Int32,System.Int32)">
+            <summary>
+            Initializes the Reconnect timer
+            </summary>
+            <param name="interval">The interval between reconnect attempts</param>
+            <param name="maxRetries">The maximum number of reconnection attempts before TAG shuts down</param>
+        </member>
+        <member name="M:FreeAllegiance.Tag.ReconnectTimer.Start">
+            <summary>
+            Starts the Reconnect timer with the initalized interval
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.ReconnectTimer.Stop">
+            <summary>
+            Stops the Reconnect timer
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.ReconnectTimer.AttemptReconnect(System.Object)">
+            <summary>
+            Attempts a reconnection with Allsrv
+            </summary>
+            <param name="state">Data asynchronously passed to this method</param>
+        </member>
+        <member name="T:FreeAllegiance.Tag.Players">
+            <summary>
+            A list of players, games, and teams
+            </summary>
+        </member>
+        <member name="F:FreeAllegiance.Tag.Players.NOATID">
+            <summary>
+            Allsrv's ID for the NOAT team
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Players.#ctor(ALLEGIANCESERVERLib.IAdminServer)">
+            <summary>
+            Creates an empty player list
+            </summary>
+            <param name="server">A reference to the Allsrv gameserver</param>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Players.Initialize(ALLEGIANCESERVERLib.IAdminServer)">
+            <summary>
+            Fills the PlayerTable with players and their teams
+            </summary>
+            <param name="server">A reference to the Allsrv server</param>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Players.Clear">
+            <summary>
+            Clears this list of players
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Players.GetGameByPlayer(System.String)">
+            <summary>
+            Retrieves the game that the specified player is playing
+            </summary>
+            <param name="callsign">The callsign to search</param>
+            <returns>This player's game, if any</returns>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Players.GetTeamByPlayer(System.String)">
+            <summary>
+            Retrieves the specified player's teamindex
+            </summary>
+            <param name="callsign">The callsign to search</param>
+            <returns>The specified player's TeamID, or -2 if not in list</returns>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Players.AddPlayer(System.String,System.Int32,System.Int32)">
+            <summary>
+            Adds a player to the list
+            </summary>
+            <param name="callsign">The callsign of the player to add</param>
+            <param name="gameID">The ID of this player's game</param>
+            <param name="teamIndex">The index of this player's team</param>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Players.RemovePlayer(System.String)">
+            <summary>
+            Removes the specified player from the list
+            </summary>
+            <param name="callsign">The callsign of the player to remove</param>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Players.UpdateTeam(System.String,System.Int32)">
+            <summary>
+            Updates the specified player's team
+            </summary>
+            <param name="callsign">The callsign of the player whose team will be changed</param>
+            <param name="teamID">The index of the player's new team</param>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Players.GetTeamIndexFromTeamID(System.Int32,System.Int32)">
+            <summary>
+            Retrieves the team's index that has the specified ID. Returns -1 for NOAT
+            </summary>
+            <param name="gameID">The ID of the game</param>
+            <param name="teamID">The ID of the team whose index should be retrieved</param>
+            <returns>The index of the team with the specified ID</returns>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Players.GetPlayerRow(System.String)">
+            <summary>
+            Retrieves the specified player's row
+            </summary>
+            <param name="callsign">The callsign of the row to retrieve</param>
+            <returns>The specified player's row</returns>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Players.Count">
+            <summary>
+            The number of players in this list
+            </summary>
+        </member>
+        <member name="T:FreeAllegiance.Tag.ChatTargetHelper">
+            <summary>
+            Helps clean up chat targets and wingnames
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.ChatTargetHelper.CleanTargetName(System.String,System.String)">
+            <summary>
+            Cleans the specified target/type into a readable target
+            </summary>
+            <param name="target">The target of the chatmessage</param>
+            <param name="type">The type of the target</param>
+            <returns>A "friendly" name for the chat target</returns>
+        </member>
+        <member name="M:FreeAllegiance.Tag.ChatTargetHelper.GetWingName(System.String)">
+            <summary>
+            Parses the specified wingtype into a friendly wing
+            </summary>
+            <param name="wingType">The type of wing</param>
+            <returns>The friendly name of the specified wing</returns>
+        </member>
+        <member name="T:FreeAllegiance.Tag.GameSettingsHelper">
+            <summary>
+            A helper class for parsing specific game settings into user-set ones
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.GameSettingsHelper.GetResources(AGCLib.IAGCGame)">
+            <summary>
+            Retrieves the Resources setting for this game
+            </summary>
+            <param name="game">The game whose resources setting should be read</param>
+            <returns>The integer representing the resources setting, or -1 if "custom"</returns>
+        </member>
+        <member name="M:FreeAllegiance.Tag.GameSettingsHelper.GetMapName(AGCLib.IAGCGame)">
+            <summary>
+            Convert the map number into a map name for the specified game
+            </summary>
+            <param name="game">The game whose MapName should be retrieved</param>
+        </member>
+        <member name="T:FreeAllegiance.Tag.Asgs.Services">
+            <remarks/>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Asgs.Services.#ctor">
+            <remarks/>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Asgs.Services.Authenticate(System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Asgs.Services.BeginAuthenticate(System.String,System.String,System.AsyncCallback,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Asgs.Services.EndAuthenticate(System.IAsyncResult)">
+            <remarks/>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Asgs.Services.AuthenticateAsync(System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Asgs.Services.AuthenticateAsync(System.String,System.String,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Asgs.Services.AuthenticateTicket(System.String,System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Asgs.Services.BeginAuthenticateTicket(System.String,System.String,System.String,System.AsyncCallback,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Asgs.Services.EndAuthenticateTicket(System.IAsyncResult)">
+            <remarks/>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Asgs.Services.AuthenticateTicketAsync(System.String,System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Asgs.Services.AuthenticateTicketAsync(System.String,System.String,System.String,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Asgs.Services.RegisterServer(System.String,System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Asgs.Services.BeginRegisterServer(System.String,System.String,System.String,System.AsyncCallback,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Asgs.Services.EndRegisterServer(System.IAsyncResult)">
+            <remarks/>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Asgs.Services.RegisterServerAsync(System.String,System.String,System.String)">
+            <remarks/>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Asgs.Services.RegisterServerAsync(System.String,System.String,System.String,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Asgs.Services.PostGameStatistics(System.String,System.String@)">
+            <remarks/>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Asgs.Services.BeginPostGameStatistics(System.String,System.AsyncCallback,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Asgs.Services.EndPostGameStatistics(System.IAsyncResult,System.String@)">
+            <remarks/>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Asgs.Services.PostGameStatisticsAsync(System.String)">
+            <remarks/>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Asgs.Services.PostGameStatisticsAsync(System.String,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Asgs.Services.GetPlayerRank(System.String)">
+            <remarks/>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Asgs.Services.BeginGetPlayerRank(System.String,System.AsyncCallback,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Asgs.Services.EndGetPlayerRank(System.IAsyncResult)">
+            <remarks/>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Asgs.Services.GetPlayerRankAsync(System.String)">
+            <remarks/>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Asgs.Services.GetPlayerRankAsync(System.String,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Asgs.Services.CancelAsync(System.Object)">
+            <remarks/>
+        </member>
+        <member name="E:FreeAllegiance.Tag.Asgs.Services.AuthenticateCompleted">
+            <remarks/>
+        </member>
+        <member name="E:FreeAllegiance.Tag.Asgs.Services.AuthenticateTicketCompleted">
+            <remarks/>
+        </member>
+        <member name="E:FreeAllegiance.Tag.Asgs.Services.RegisterServerCompleted">
+            <remarks/>
+        </member>
+        <member name="E:FreeAllegiance.Tag.Asgs.Services.PostGameStatisticsCompleted">
+            <remarks/>
+        </member>
+        <member name="E:FreeAllegiance.Tag.Asgs.Services.GetPlayerRankCompleted">
+            <remarks/>
+        </member>
+        <member name="T:FreeAllegiance.Tag.Asgs.AuthenticateCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:FreeAllegiance.Tag.Asgs.AuthenticateCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Asgs.AuthenticateCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:FreeAllegiance.Tag.Asgs.AuthenticateTicketCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:FreeAllegiance.Tag.Asgs.AuthenticateTicketCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Asgs.AuthenticateTicketCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:FreeAllegiance.Tag.Asgs.RegisterServerCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:FreeAllegiance.Tag.Asgs.RegisterServerCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Asgs.RegisterServerCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:FreeAllegiance.Tag.Asgs.PostGameStatisticsCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:FreeAllegiance.Tag.Asgs.PostGameStatisticsCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Asgs.PostGameStatisticsCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Asgs.PostGameStatisticsCompletedEventArgs.Result1">
+            <remarks/>
+        </member>
+        <member name="T:FreeAllegiance.Tag.Asgs.GetPlayerRankCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:FreeAllegiance.Tag.Asgs.GetPlayerRankCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Asgs.GetPlayerRankCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:FreeAllegiance.Tag.AGCEventHandler">
+            <summary>
+            Handles events raised by Allsrv
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.AGCEventHandler.Initialize(FreeAllegiance.Tag.AllsrvConnector)">
+            <summary>
+            Connects the AllsrvConnector's events to the core's handlers
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.AGCEventHandler.Uninitialize">
+            <summary>
+            Disconnects the core's handlers from AllsrvConnector's events
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.AGCEventHandler.AdminPagedAGCEventHandler(System.Object,FreeAllegiance.Tag.Events.AdminPagedAGCEventArgs)">
+            <summary>
+            Handles the AdminPaged AGCEvent
+            </summary>
+            <param name="sender">The object firing the event</param>
+            <param name="e">The arguments of the event</param>
+        </member>
+        <member name="M:FreeAllegiance.Tag.AGCEventHandler.ChatMessageAGCEventHandler(System.Object,FreeAllegiance.Tag.Events.ChatMessageAGCEventArgs)">
+            <summary>
+            Handles the ChatMessage AGCEvent
+            </summary>
+            <param name="sender">The object firing the event</param>
+            <param name="e">The arguments of the event</param>
+        </member>
+        <member name="M:FreeAllegiance.Tag.AGCEventHandler.GameCreatedAGCEventHandler(System.Object,FreeAllegiance.Tag.Events.GameCreatedAGCEventArgs)">
+            <summary>
+            Handles the GameCreated AGCEvent
+            </summary>
+            <param name="sender">The object firing the event</param>
+            <param name="e">The arguments of the event</param>
+        </member>
+        <member name="M:FreeAllegiance.Tag.AGCEventHandler.GameDestroyedAGCEventHandler(System.Object,FreeAllegiance.Tag.Events.GameDestroyedAGCEventArgs)">
+            <summary>
+            Handles the GameDestroyed AGCEvent
+            </summary>
+            <param name="sender">The object firing the event</param>
+            <param name="e">The arguments of the event</param>
+        </member>
+        <member name="M:FreeAllegiance.Tag.AGCEventHandler.GameEndedAGCEventHandler(System.Object,FreeAllegiance.Tag.Events.GameEndedAGCEventArgs)">
+            <summary>
+            Handles the GameEnded AGCEvent
+            </summary>
+            <param name="sender">The object firing the event</param>
+            <param name="e">The arguments of the event</param>
+        </member>
+        <member name="M:FreeAllegiance.Tag.AGCEventHandler.GameOverAGCEventHandler(System.Object,FreeAllegiance.Tag.Events.GameOverAGCEventArgs)">
+            <summary>
+            Handles the GameOver AGCEvent
+            </summary>
+            <param name="sender">The object firing the event</param>
+            <param name="e">The arguments of the event</param>
+        </member>
+        <member name="M:FreeAllegiance.Tag.AGCEventHandler.GameStartedAGCEventHandler(System.Object,FreeAllegiance.Tag.Events.GameStartedAGCEventArgs)">
+            <summary>
+            Handles the GameStarted AGCEvent
+            </summary>
+            <param name="sender">The object firing the event</param>
+            <param name="e">The arguments of the event</param>
+        </member>
+        <member name="M:FreeAllegiance.Tag.AGCEventHandler.LobbyConnectedAGCEventHandler(System.Object,FreeAllegiance.Tag.Events.LobbyConnectedAGCEventArgs)">
+            <summary>
+            Handles the LobbyConnected AGCEvent
+            </summary>
+            <param name="sender">The object firing the event</param>
+            <param name="e">The arguments of the event</param>
+        </member>
+        <member name="M:FreeAllegiance.Tag.AGCEventHandler.LobbyDisconnectedAGCEventHandler(System.Object,FreeAllegiance.Tag.Events.LobbyDisconnectedAGCEventArgs)">
+            <summary>
+            Handles the LobbyDisconnected AGCEvent
+            </summary>
+            <param name="sender">The object firing the event</param>
+            <param name="e">The arguments of the event</param>
+        </member>
+        <member name="M:FreeAllegiance.Tag.AGCEventHandler.LobbyDisconnectingAGCEventHandler(System.Object,FreeAllegiance.Tag.Events.LobbyDisconnectingAGCEventArgs)">
+            <summary>
+            Handles the LobbyDisconnecting AGCEvent
+            </summary>
+            <param name="sender">The object firing the event</param>
+            <param name="e">The arguments of the event</param>
+        </member>
+        <member name="M:FreeAllegiance.Tag.AGCEventHandler.LobbyLostAGCEventHandler(System.Object,FreeAllegiance.Tag.Events.LobbyLostAGCEventArgs)">
+            <summary>
+            Handles the LobbyLost AGCEvent
+            </summary>
+            <param name="sender">The object firing the event</param>
+            <param name="e">The arguments of the event</param>
+        </member>
+        <member name="M:FreeAllegiance.Tag.AGCEventHandler.PlayerDroppedAGCEventHandler(System.Object,FreeAllegiance.Tag.Events.PlayerDroppedAGCEventArgs)">
+            <summary>
+            Handles the PlayerDropped AGCEvent
+            </summary>
+            <param name="sender">The object firing the event</param>
+            <param name="e">The arguments of the event</param>
+        </member>
+        <member name="M:FreeAllegiance.Tag.AGCEventHandler.PlayerJoinedTeamAGCEventHandler(System.Object,FreeAllegiance.Tag.Events.PlayerJoinedTeamAGCEventArgs)">
+            <summary>
+            Handles the PlayerJoinedTeam AGCEvent
+            </summary>
+            <param name="sender">The object firing the event</param>
+            <param name="e">The arguments of the event</param>
+        </member>
+        <member name="M:FreeAllegiance.Tag.AGCEventHandler.PlayerLeftTeamAGCEventHandler(System.Object,FreeAllegiance.Tag.Events.PlayerLeftTeamAGCEventArgs)">
+            <summary>
+            Handles the PlayerLeftTeam AGCEvent
+            </summary>
+            <param name="sender">The object firing the event</param>
+            <param name="e">The arguments of the event</param>
+        </member>
+        <member name="M:FreeAllegiance.Tag.AGCEventHandler.PlayerLoggedInAGCEventHandler(System.Object,FreeAllegiance.Tag.Events.PlayerLoggedInAGCEventArgs)">
+            <summary>
+            Handles the PlayerLoggedIn AGCEvent
+            </summary>
+            <param name="sender">The object firing the event</param>
+            <param name="e">The arguments of the event</param>
+        </member>
+        <member name="M:FreeAllegiance.Tag.AGCEventHandler.PlayerLoggedOutAGCEventHandler(System.Object,FreeAllegiance.Tag.Events.PlayerLoggedOutAGCEventArgs)">
+            <summary>
+            Handles the PlayerLoggedOut AGCEvent
+            </summary>
+            <param name="sender">The object firing the event</param>
+            <param name="e">The arguments of the event</param>
+        </member>
+        <member name="M:FreeAllegiance.Tag.AGCEventHandler.ShipKilledAGCEventHandler(System.Object,FreeAllegiance.Tag.Events.ShipKilledAGCEventArgs)">
+            <summary>
+            Handles the ShipKilled AGCEvent
+            </summary>
+            <param name="sender">The object firing the event</param>
+            <param name="e">The arguments of the event</param>
+        </member>
+        <member name="M:FreeAllegiance.Tag.AGCEventHandler.StationCapturedAGCEventHandler(System.Object,FreeAllegiance.Tag.Events.StationCapturedAGCEventArgs)">
+            <summary>
+            Handles the StationCaptured AGCEvent
+            </summary>
+            <param name="sender">The object firing the event</param>
+            <param name="e">The arguments of the event</param>
+        </member>
+        <member name="M:FreeAllegiance.Tag.AGCEventHandler.StationCreatedAGCEventHandler(System.Object,FreeAllegiance.Tag.Events.StationCreatedAGCEventArgs)">
+            <summary>
+            Handles the StationCreated AGCEvent
+            </summary>
+            <param name="sender">The object firing the event</param>
+            <param name="e">The arguments of the event</param>
+        </member>
+        <member name="M:FreeAllegiance.Tag.AGCEventHandler.StationDestroyedAGCEventHandler(System.Object,FreeAllegiance.Tag.Events.StationDestroyedAGCEventArgs)">
+            <summary>
+            Handles the StationDestroyed AGCEvent
+            </summary>
+            <param name="sender">The object firing the event</param>
+            <param name="e">The arguments of the event</param>
+        </member>
+        <member name="M:FreeAllegiance.Tag.AGCEventHandler.TeamInfoChangedAGCEventHandler(System.Object,FreeAllegiance.Tag.Events.TeamInfoChangedAGCEventArgs)">
+            <summary>
+            Handles the TeamInfoChanged AGCEvent
+            </summary>
+            <param name="sender">The object firing the event</param>
+            <param name="e">The arguments of the event</param>
+        </member>
+        <member name="M:FreeAllegiance.Tag.AGCEventHandler.TerminateAGCEventHandler(System.Object,FreeAllegiance.Tag.Events.TerminateAGCEventArgs)">
+            <summary>
+            Handles the Terminate AGCEvent
+            </summary>
+            <param name="sender">The object firing the event</param>
+            <param name="e">The arguments of the event</param>
+        </member>
+        <member name="M:FreeAllegiance.Tag.AGCEventHandler.PostGame(System.Object)">
+            <summary>
+            Posts the specified game to ASGS, and logs it
+            </summary>
+            <param name="data">The data to post</param>
+        </member>
+        <member name="T:FreeAllegiance.Tag.Game">
+            <summary>
+            An Allegiance Game
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Game.#ctor(AGCLib.IAGCGame)">
+            <summary>
+            Default Constructor
+            </summary>
+            <param name="game">Allsrv's IAGCGame interface</param>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Game.GetSyncRoot">
+            <summary>
+            Synchronizes access to this game
+            </summary>
+            <returns>An object that can be used to synchronize this game</returns>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Game.GetGameEndedMRE">
+            <summary>
+            Retrieves the event used to synchronize GameEnded and GameOver events
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Game.Dispose">
+            <summary>
+            Disposes of any resources used by this game
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Game.Start(System.DateTime)">
+            <summary>
+            Copies all game/team parameters into this game's GameData object
+            </summary>
+            <param name="startTime">The time this game started</param>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Game.IsHuman(AGCLib.IAGCShip)">
+            <summary>
+            Determines if the specified ship is human
+            </summary>
+            <param name="ship">The ship to determine if it's human</param>
+            <returns>True if human, false if not</returns>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Game.GetCommander(AGCLib.IAGCTeam)">
+            <summary>
+            Analyzes all players' donating status to determine which player has
+            the most donatees.
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Game.GetTeamIndex(System.Int32)">
+            <summary>
+            Retrieves the index of the specified team
+            </summary>
+            <param name="teamID">The ID of the team</param>
+            <returns>The index of the team with the specified ID</returns>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Game.SendChat(System.String)">
+            <summary>
+            Sends the specified message from the Admin callsign
+            </summary>
+            <param name="text">The message to say as Admin</param>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Game.GameID">
+            <summary>
+            The ID of this game
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Game.GameName">
+            <summary>
+            The name of this game
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Game.GameData">
+            <summary>
+            Returns the GameData of this game
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Game.NumTeams">
+            <summary>
+            The number of teams in this game
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Game.InProgress">
+            <summary>
+            Determines whether or not this game is started
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Game.DebugKills">
+            <summary>
+            Turns on kill debugging
+            </summary>
+        </member>
+        <member name="T:FreeAllegiance.Tag.GameServer">
+            <summary>
+            Provides access to the Allegiance Server's information
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.GameServer.Initialize">
+            <summary>
+            Initializes the GameServer and reads the games from the server
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.GameServer.Disconnect">
+            <summary>
+            Disconnects from Allsrv and releases any resources in use.
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.GameServer.LoadGame(System.Int32)">
+            <summary>
+            Attempts to load the game with the specified ID from Allsrv
+            </summary>
+            <param name="gameID">The ID of the game to load</param>
+            <returns>A reference to the newly-added game</returns>
+        </member>
+        <member name="M:FreeAllegiance.Tag.GameServer.SendChat(System.String,System.String)">
+            <summary>
+            Sends a private message to the specified user
+            </summary>
+            <param name="callsign">The callsign of the user</param>
+            <param name="message">The message to send</param>
+        </member>
+        <member name="M:FreeAllegiance.Tag.GameServer.SendChat(System.String)">
+            <summary>
+            Sends the specified message from the Admin callsign
+            </summary>
+            <param name="message">The message to say as Admin</param>
+        </member>
+        <member name="M:FreeAllegiance.Tag.GameServer.BootUser(System.String)">
+            <summary>
+            Boots the specified player off of the server
+            </summary>
+            <param name="callsign">The callsign of the user to boot</param>
+        </member>
+        <member name="P:FreeAllegiance.Tag.GameServer.Games">
+            <summary>
+            A list of games currently running on this server
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.GameServer.Players">
+            <summary>
+            A list of players on this server
+            </summary>
+        </member>
+        <member name="T:FreeAllegiance.Tag.Games">
+            <summary>
+            A collection of Game objects
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Games.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Games.GetEnumerator">
+            <summary>
+            Returns an enumerator that can iterate through the Games within this collection
+            </summary>
+            <returns>An enumerator that iterates through this collection</returns>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Games.GetGameByID(System.Int32)">
+            <summary>
+            Retrieves the game with the specified ID from the list
+            </summary>
+            <param name="gameID">The GameID to search for</param>
+            <returns>The found game, or null if it does not exist</returns>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Games.RemoveGame(System.Int32)">
+            <summary>
+            Removes the specified game from the collection
+            </summary>
+            <param name="gameID"></param>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Games.RemoveAt(System.Int32)">
+            <summary>
+            Removes the game at the specified index
+            </summary>
+            <param name="index">The index of the game to remove</param>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Games.Insert(System.Int32,System.Object)">
+            <summary>
+            Inserts a new game at the specified index
+            </summary>
+            <param name="index">The index at which to insert the specified game</param>
+            <param name="value">The game to insert</param>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Games.Remove(System.Object)">
+            <summary>
+            Removes the specified game from the collection
+            </summary>
+            <param name="value">The game to remove</param>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Games.Contains(System.Object)">
+            <summary>
+            Determines if the specified game exists in this collection
+            </summary>
+            <param name="value">The game to look for</param>
+            <returns>True if the specified game is in this collection</returns>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Games.Clear">
+            <summary>
+            Clears this list of games
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Games.IndexOf(System.Object)">
+            <summary>
+            Retrieves the index of the specified game
+            </summary>
+            <param name="value">The game to look for</param>
+            <returns>The index of the game if found</returns>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Games.Add(FreeAllegiance.Tag.Game)">
+            <summary>
+            Adds the specified game to the collection
+            </summary>
+            <param name="value">The game to add to the collection</param>
+            <returns>The index of the added game</returns>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Games.Add(System.Object)">
+            <summary>
+            Adds the specified game to the collection
+            </summary>
+            <param name="value">The game to add to the collection</param>
+            <returns>The index of the added game</returns>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Games.CopyTo(System.Array,System.Int32)">
+            <summary>
+            Copies this games list to the specified array at the specified index
+            </summary>
+            <param name="array">The array to which this game should be copied</param>
+            <param name="index">The index at which to start copying</param>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Games.IsReadOnly">
+            <summary>
+            Gets a value indicating whether this games list is Read Only
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Games.Item(System.Int32)">
+            <summary>
+            Retrieves a game from this list
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Games.IsFixedSize">
+            <summary>
+            Gets a value determining if this list has a fixed size
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Games.IsSynchronized">
+            <summary>
+            Gets a value indicating whether access to the Games is synchronized (thread-safe)
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Games.Count">
+            <summary>
+            The number of games in this collection
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Games.SyncRoot">
+            <summary>
+            Gets an object that can be used to synchronize access to this games list
+            </summary>
+        </member>
+        <member name="T:FreeAllegiance.Tag.AsgsConnector">
+            <summary>
+            Provides access to the ASGS web services
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.AsgsConnector.Initialize(System.String,System.Int32)">
+            <summary>
+            Initializes the ASGSConnector
+            </summary>
+            <param name="asgsUrl">The URL of ASGS's services, or null if the default should be used</param>
+            <param name="timeout">The number of milliseconds to wait for a response from the ASGS server upon posting</param>
+        </member>
+        <member name="M:FreeAllegiance.Tag.AsgsConnector.PostGame(System.String,System.String@)">
+            <summary>
+            Posts the specified game to the ASGS database
+            </summary>
+            <param name="gamedata">The compressed xml of a TagDataset</param>
+            <param name="message">A reply message from the ASGS server</param>
+            <returns>Positive if successful (GameID)
+            		-1 if error occurred</returns>
+        </member>
+        <member name="T:FreeAllegiance.Tag.CssConnector">
+            <summary>
+            Provides access to the ACSS web services
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.CssConnector.Initialize(System.String,System.Int32,System.Boolean)">
+            <summary>
+            Initializes the connector
+            </summary>
+            <param name="asgsUrl">The URL of CSS's services, or null if the default should be used</param>
+            <param name="timeout">The number of milliseconds to wait for a response from the CSS server upon posting</param>
+        </member>
+        <member name="M:FreeAllegiance.Tag.CssConnector.PostGame(System.String,System.String@)">
+            <summary>
+            Posts the specified game to the ACSS database
+            </summary>
+            <param name="gamedata">The compressed xml of a TagDataset</param>
+            <param name="message">A reply message from the ASGS server</param>
+            <returns>Positive if successful (GameID)
+            		-1 if error occurred</returns>
+        </member>
+        <member name="T:FreeAllegiance.Tag.Css.Tag">
+            <remarks/>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Css.Tag.#ctor">
+            <remarks/>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Css.Tag.SaveGameData(System.String,System.Int32@,System.Boolean@,System.String@)">
+            <remarks/>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Css.Tag.BeginSaveGameData(System.String,System.AsyncCallback,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Css.Tag.EndSaveGameData(System.IAsyncResult,System.Int32@,System.Boolean@,System.String@)">
+            <remarks/>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Css.Tag.SaveGameDataAsync(System.String)">
+            <remarks/>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Css.Tag.SaveGameDataAsync(System.String,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Css.Tag.CancelAsync(System.Object)">
+            <remarks/>
+        </member>
+        <member name="E:FreeAllegiance.Tag.Css.Tag.SaveGameDataCompleted">
+            <remarks/>
+        </member>
+        <member name="T:FreeAllegiance.Tag.Css.SaveGameDataCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:FreeAllegiance.Tag.Css.SaveGameDataCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Css.SaveGameDataCompletedEventArgs.SaveGameDataResult">
+            <remarks/>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Css.SaveGameDataCompletedEventArgs.SaveGameDataResultSpecified">
+            <remarks/>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Css.SaveGameDataCompletedEventArgs.message">
+            <remarks/>
+        </member>
+    </members>
+</doc>

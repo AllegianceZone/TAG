@@ -1,0 +1,7 @@
+Add "admin" setting in config file to override #restricted command enforcement
+Add "Watchdog" thread (or is this no longer needed cuz of R4?)
+	- Checks every interval for a "dead" allsrv
+		- "dead" is if all games have 0 players and 
+	- interval is settable in config file
+	- Watchdog will stop/restart allsrv if "dead"
+	

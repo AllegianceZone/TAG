@@ -1,0 +1,991 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AllsrvConnector</name>
+    </assembly>
+    <members>
+        <member name="T:FreeAllegiance.Tag.Events.TerminateAGCEventArgs">
+            <summary>
+            Details of the Terminate event
+            </summary>
+        </member>
+        <member name="T:FreeAllegiance.Tag.Events.AGCEventArgs">
+            <summary>
+            The Details of an AGCEvent
+            </summary>
+        </member>
+        <member name="F:FreeAllegiance.Tag.Events.AGCEventArgs.BASEAGCEVENTARGSCOUNT">
+            <summary>
+            The numer of arguments in a base AGCEvent
+            </summary>
+        </member>
+        <member name="F:FreeAllegiance.Tag.Events.AGCEventArgs._args">
+            <summary>
+            The list of arguments
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Events.AGCEventArgs.#ctor(FreeAllegiance.Tag.AGCEventWrapper)">
+            <summary>
+            
+            </summary>
+            <param name="agcEvent"></param>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Events.AGCEventArgs.#ctor(AGCLib.IAGCEvent)">
+            <summary>
+            Default Constructor
+            </summary>
+            <param name="agcEvent">The AGCEvent being thrown</param>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.AGCEventArgs.Description">
+            <summary>
+            The description of the event
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.AGCEventArgs.ServerName">
+            <summary>
+            The machinename of the gameserver that threw the event
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.AGCEventArgs.Context">
+            <summary>
+            The context of an event (??)
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.AGCEventArgs.EventID">
+            <summary>
+            The type of event being thrown
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.AGCEventArgs.TargetID">
+            <summary>
+            The ID of the object signaling the event
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.AGCEventArgs.TargetName">
+            <summary>
+            The name of the object signaling the event
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.AGCEventArgs.Time">
+            <summary>
+            The time the event took place
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Events.TerminateAGCEventArgs.#ctor(FreeAllegiance.Tag.AGCEventWrapper)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="agcEvent">The AGCEvent being thrown</param>
+        </member>
+        <member name="T:FreeAllegiance.Tag.Events.TeamInfoChangedAGCEventArgs">
+            <summary>
+            Details of the TeamInfo Changed event
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Events.TeamInfoChangedAGCEventArgs.#ctor(FreeAllegiance.Tag.AGCEventWrapper)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="agcEvent">The AGCEvent being thrown</param>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.TeamInfoChangedAGCEventArgs.TeamID">
+            <summary>
+            The ID of the team that changed its info (TargetID)
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.TeamInfoChangedAGCEventArgs.OldTeamName">
+            <summary>
+            The name of the team that changed its info (TargetName)
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.TeamInfoChangedAGCEventArgs.GameID">
+            <summary>
+            The ID of the game where the team changed its info
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.TeamInfoChangedAGCEventArgs.GameName">
+            <summary>
+            The name of the game where the team changed its info
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.TeamInfoChangedAGCEventArgs.NewTeamName">
+            <summary>
+            The new name of the team
+            </summary>
+        </member>
+        <member name="T:FreeAllegiance.Tag.Events.LobbyLostAGCEventArgs">
+            <summary>
+            Details of the LobbyLost event
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Events.LobbyLostAGCEventArgs.#ctor(FreeAllegiance.Tag.AGCEventWrapper)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="agcEvent">The AGCEvent being thrown</param>
+        </member>
+        <member name="T:FreeAllegiance.Tag.Events.GameStartedAGCEventArgs">
+            <summary>
+            Details of the Game Started event
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Events.GameStartedAGCEventArgs.#ctor(FreeAllegiance.Tag.AGCEventWrapper)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="agcEvent">The AGCEvent being thrown</param>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.GameStartedAGCEventArgs.GameID">
+            <summary>
+            The ID of the game that started (TargetID)
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.GameStartedAGCEventArgs.GameName">
+            <summary>
+            The name of the game that started (TargetName)
+            </summary>
+        </member>
+        <member name="T:FreeAllegiance.Tag.Events.ChatMessageAGCEventArgs">
+            <summary>
+            Details of the Chat Message event
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Events.ChatMessageAGCEventArgs.#ctor(FreeAllegiance.Tag.AGCEventWrapper)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="agcEvent">The AGCEvent being thrown</param>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.ChatMessageAGCEventArgs.SpeakerID">
+            <summary>
+            The ID of the player sending the chat (same as TargetID)
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.ChatMessageAGCEventArgs.SpeakerName">
+            <summary>
+            The callsign of the player sending the chat (Same as TargetName)
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.ChatMessageAGCEventArgs.CommandID">
+            <summary>
+            The ID of the command issued with the chat
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.ChatMessageAGCEventArgs.GameID">
+            <summary>
+            The MissionID of the game where the chat occurred
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.ChatMessageAGCEventArgs.Text">
+            <summary>
+            The contents of the chat message
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.ChatMessageAGCEventArgs.RecipientName">
+            <summary>
+            The callsign or ChatTarget of the recipient
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.ChatMessageAGCEventArgs.RecipientID">
+            <summary>
+            The ID of the recipient
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.ChatMessageAGCEventArgs.ChatType">
+            <summary>
+            The type of chat being sent
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.ChatMessageAGCEventArgs.VoiceID">
+            <summary>
+            The voicechat ID associated with this chat message
+            </summary>
+        </member>
+        <member name="T:FreeAllegiance.Tag.Events.StationDestroyedAGCEventArgs">
+            <summary>
+            Details of the Station Destroyed event
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Events.StationDestroyedAGCEventArgs.#ctor(FreeAllegiance.Tag.AGCEventWrapper)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="agcEvent">The AGCEvent being thrown</param>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.StationDestroyedAGCEventArgs.KillerID">
+            <summary>
+            The ID of the player who killed this station (TargetID)
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.StationDestroyedAGCEventArgs.KillerName">
+            <summary>
+            The name of the player who killed this station (TargetName)
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.StationDestroyedAGCEventArgs.GameID">
+            <summary>
+            The ID of the game where this basekill occurred (-1 if FAZ R1)
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.StationDestroyedAGCEventArgs.TeamID">
+            <summary>
+            The ID of the team who lost their base
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.StationDestroyedAGCEventArgs.TeamName">
+            <summary>
+            The name of the team who lost their base
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.StationDestroyedAGCEventArgs.StationName">
+            <summary>
+            The name of the station that was destroyed
+            </summary>
+        </member>
+        <member name="T:FreeAllegiance.Tag.Events.GameDestroyedAGCEventArgs">
+            <summary>
+            Details of the Game Destroyed event
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Events.GameDestroyedAGCEventArgs.#ctor(FreeAllegiance.Tag.AGCEventWrapper)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="agcEvent">The AGCEvent being thrown</param>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.GameDestroyedAGCEventArgs.GameID">
+            <summary>
+            The ID of the game that was destroyed (TargetID)
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.GameDestroyedAGCEventArgs.GameName">
+            <summary>
+            The name of the game that was destroyed (TargetName)
+            </summary>
+        </member>
+        <member name="T:FreeAllegiance.Tag.Events.PlayerLoggedInAGCEventArgs">
+            <summary>
+            Details of the Player LoggedIn event
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Events.PlayerLoggedInAGCEventArgs.#ctor(FreeAllegiance.Tag.AGCEventWrapper)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="agcEvent">The AGCEvent being thrown</param>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.PlayerLoggedInAGCEventArgs.PlayerID">
+            <summary>
+            The ID of the player who logged in (TargetID)
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.PlayerLoggedInAGCEventArgs.PlayerName">
+            <summary>
+            The name of the player who logged in (TargetName)
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.PlayerLoggedInAGCEventArgs.GameID">
+            <summary>
+            The ID of the game that the player logged into
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.PlayerLoggedInAGCEventArgs.GameName">
+            <summary>
+            The name of the game that the player logged into
+            </summary>
+        </member>
+        <member name="T:FreeAllegiance.Tag.Events.GameEndedAGCEventArgs">
+            <summary>
+            Details of the Game Ended event
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Events.GameEndedAGCEventArgs.#ctor(FreeAllegiance.Tag.AGCEventWrapper)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="agcEvent">The AGCEvent being thrown</param>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.GameEndedAGCEventArgs.GameID">
+            <summary>
+            The ID of the game that ended (TargetID)
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.GameEndedAGCEventArgs.Reason">
+            <summary>
+            The reason the game ended
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.GameEndedAGCEventArgs.WinningTeamID">
+            <summary>
+            The ID of the team that won
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.GameEndedAGCEventArgs.WinningTeamName">
+            <summary>
+            The name of the team that won
+            </summary>
+        </member>
+        <member name="T:FreeAllegiance.Tag.Events.PlayerDroppedAGCEventArgs">
+            <summary>
+            Details of the Player Dropped event
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Events.PlayerDroppedAGCEventArgs.#ctor(FreeAllegiance.Tag.AGCEventWrapper)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="agcEvent">The AGCEvent being thrown</param>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.PlayerDroppedAGCEventArgs.PlayerName">
+            <summary>
+            The name of the player that dropped (TargetName)
+            </summary>
+        </member>
+        <member name="T:FreeAllegiance.Tag.Events.LobbyDisconnectingAGCEventArgs">
+            <summary>
+            Details of the Lobby Disconnecting event
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Events.LobbyDisconnectingAGCEventArgs.#ctor(FreeAllegiance.Tag.AGCEventWrapper)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="agcEvent">The AGCEvent being thrown</param>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.LobbyDisconnectingAGCEventArgs.LobbyIP">
+            <summary>
+            The IP address of the lost lobby
+            </summary>
+        </member>
+        <member name="T:FreeAllegiance.Tag.Events.StationCapturedAGCEventArgs">
+            <summary>
+            Details of the Station Captured event
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Events.StationCapturedAGCEventArgs.#ctor(FreeAllegiance.Tag.AGCEventWrapper)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="agcEvent">The AGCEvent being thrown</param>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.StationCapturedAGCEventArgs.CapturerID">
+            <summary>
+            The ID of the player who captured this station (TargetID)
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.StationCapturedAGCEventArgs.CapturerName">
+            <summary>
+            The name of the player who captured this station (TargetName)
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.StationCapturedAGCEventArgs.GameID">
+            <summary>
+            The ID of the game where this capture occurred (-1 if FAZ R1)
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.StationCapturedAGCEventArgs.TeamID">
+            <summary>
+            The ID of the team who lost their base
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.StationCapturedAGCEventArgs.TeamName">
+            <summary>
+            The name of the team who lost their base
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.StationCapturedAGCEventArgs.StationName">
+            <summary>
+            The name of the station that was captured
+            </summary>
+        </member>
+        <member name="T:FreeAllegiance.Tag.Events.ShipKilledAGCEventArgs">
+            <summary>
+            Details of the Ship Killed event
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Events.ShipKilledAGCEventArgs.#ctor(FreeAllegiance.Tag.AGCEventWrapper)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="agcEvent">The AGCEvent being thrown</param>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.ShipKilledAGCEventArgs.KilledID">
+            <summary>
+            The ID of the player who killed the ship
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.ShipKilledAGCEventArgs.KilledName">
+            <summary>
+            The name of the player who killed the ship
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.ShipKilledAGCEventArgs.Amount">
+            <summary>
+            The total time taken to kill this target
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.ShipKilledAGCEventArgs.KillerID">
+            <summary>
+            The ID of the pilot of the killed ship
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.ShipKilledAGCEventArgs.KillerName">
+            <summary>
+            The name of the pilot of the killed ship
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.ShipKilledAGCEventArgs.GameID">
+            <summary>
+            The ID of the game where this kill occurred
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.ShipKilledAGCEventArgs.KilledPosition">
+            <summary>
+            Unknown. The x,y,z position of the killer?
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.ShipKilledAGCEventArgs.KillerPosition">
+            <summary>
+            Unknown. The x,y,z position of the killer?
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.ShipKilledAGCEventArgs.IsLifepod">
+            <summary>
+            Whether or not the killed ship was a lifepod
+            </summary>
+        </member>
+        <member name="T:FreeAllegiance.Tag.Events.StationCreatedAGCEventArgs">
+            <summary>
+            Details of the Station Created event
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Events.StationCreatedAGCEventArgs.#ctor(FreeAllegiance.Tag.AGCEventWrapper)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="agcEvent">The AGCEvent being thrown</param>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.StationCreatedAGCEventArgs.GameID">
+            <summary>
+            The ID of the game where this base was built
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.StationCreatedAGCEventArgs.TeamID">
+            <summary>
+            The ID of the team who built the base
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.StationCreatedAGCEventArgs.TeamName">
+            <summary>
+            The name of the team who built the base
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.StationCreatedAGCEventArgs.StationName">
+            <summary>
+            The name of the station that was built
+            </summary>
+        </member>
+        <member name="T:FreeAllegiance.Tag.AllsrvConnector">
+            <summary>
+            Manages the connection to the Allegiance Server
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.AllsrvConnector.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.AllsrvConnector.Connect">
+            <summary>
+            Connects to Allsrv and hooks into events
+            </summary>
+            <returns>The connector to Allsrv</returns>
+        </member>
+        <member name="M:FreeAllegiance.Tag.AllsrvConnector.Disconnect">
+            <summary>
+            Disconnects from Allsrv
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.AllsrvConnector.StartAllsrv">
+            <summary>
+            Starts Allsrv in desktop or service mode as installed
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.AllsrvConnector.StopAllsrv">
+            <summary>
+            Stops Allsrv, either via AGClib, stopping the service, or by manually killing the process as appropriate
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.AllsrvConnector.IsRunning">
+            <summary>
+            Checks to see if Allsrv is running
+            </summary>
+            <returns>True if Allsrv is running, False if it is not</returns>
+        </member>
+        <member name="M:FreeAllegiance.Tag.AllsrvConnector.OnEvent(AGCLib.IAGCEvent)">
+            <summary>
+            Callback that receives the AGCEvents from Allsrv
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.AllsrvConnector.ProcessEvent(System.Object)">
+            <summary>
+            Asynchronously processes the received event from Allsrv
+            </summary>
+            <param name="state">The event object received from Allsrv</param>
+        </member>
+        <member name="P:FreeAllegiance.Tag.AllsrvConnector.State">
+            <summary>
+            Retrieves the state of the connection to Allsrv
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.AllsrvConnector.Session">
+            <summary>
+            Retrieves the session to Allsrv
+            </summary>
+        </member>
+        <member name="E:FreeAllegiance.Tag.AllsrvConnector.AdminPagedEvent">
+            <summary>
+            Event fired when an AdminPaged event is received from Allsrv
+            </summary>
+        </member>
+        <member name="E:FreeAllegiance.Tag.AllsrvConnector.ChatMessageEvent">
+            <summary>
+            Event fired when a ChatMessage event is received from Allsrv
+            </summary>
+        </member>
+        <member name="E:FreeAllegiance.Tag.AllsrvConnector.GameCreatedEvent">
+            <summary>
+            Event fired when a GameCreated event is received from Allsrv
+            </summary>
+        </member>
+        <member name="E:FreeAllegiance.Tag.AllsrvConnector.GameDestroyedEvent">
+            <summary>
+            Event fired when a GameDestroyed event is received from Allsrv
+            </summary>
+        </member>
+        <member name="E:FreeAllegiance.Tag.AllsrvConnector.GameEndedEvent">
+            <summary>
+            Event fired when a GameEnded event is received from Allsrv
+            </summary>
+        </member>
+        <member name="E:FreeAllegiance.Tag.AllsrvConnector.GameOverEvent">
+            <summary>
+            Event fired when a GameOver event is received from Allsrv
+            </summary>
+        </member>
+        <member name="E:FreeAllegiance.Tag.AllsrvConnector.GameStartedEvent">
+            <summary>
+            Event fired when a GameStarted event is received from Allsrv
+            </summary>
+        </member>
+        <member name="E:FreeAllegiance.Tag.AllsrvConnector.LobbyConnectedEvent">
+            <summary>
+            Event fired when a LobbyConnected event is received from Allsrv
+            </summary>
+        </member>
+        <member name="E:FreeAllegiance.Tag.AllsrvConnector.LobbyDisconnectedEvent">
+            <summary>
+            Event fired when a LobbyDisconnected event is received from Allsrv
+            </summary>
+        </member>
+        <member name="E:FreeAllegiance.Tag.AllsrvConnector.LobbyDisconnectingEvent">
+            <summary>
+            Event fired when a LobbyDisconnecting event is received from Allsrv
+            </summary>
+        </member>
+        <member name="E:FreeAllegiance.Tag.AllsrvConnector.LobbyLostEvent">
+            <summary>
+            Event fired when a LobbyLost event is received from Allsrv
+            </summary>
+        </member>
+        <member name="E:FreeAllegiance.Tag.AllsrvConnector.PlayerDroppedEvent">
+            <summary>
+            Event fired when a PlayerDropped event is received from Allsrv
+            </summary>
+        </member>
+        <member name="E:FreeAllegiance.Tag.AllsrvConnector.PlayerJoinedTeamEvent">
+            <summary>
+            Event fired when a PlayerJoinedTeam event is received from Allsrv
+            </summary>
+        </member>
+        <member name="E:FreeAllegiance.Tag.AllsrvConnector.PlayerLeftTeamEvent">
+            <summary>
+            Event fired when a PlayerLeftTeam event is received from Allsrv
+            </summary>
+        </member>
+        <member name="E:FreeAllegiance.Tag.AllsrvConnector.PlayerLoggedInEvent">
+            <summary>
+            Event fired when a PlayerLoggedIn event is received from Allsrv
+            </summary>
+        </member>
+        <member name="E:FreeAllegiance.Tag.AllsrvConnector.PlayerLoggedOutEvent">
+            <summary>
+            Event fired when a PlayerLoggedOut event is received from Allsrv
+            </summary>
+        </member>
+        <member name="E:FreeAllegiance.Tag.AllsrvConnector.ShipKilledEvent">
+            <summary>
+            Event fired when a ShipKilled event is received from Allsrv
+            </summary>
+        </member>
+        <member name="E:FreeAllegiance.Tag.AllsrvConnector.StationCapturedEvent">
+            <summary>
+            Event fired when a StationCaptured event is received from Allsrv
+            </summary>
+        </member>
+        <member name="E:FreeAllegiance.Tag.AllsrvConnector.StationCreatedEvent">
+            <summary>
+            Event fired when a StationCreated event is received from Allsrv
+            </summary>
+        </member>
+        <member name="E:FreeAllegiance.Tag.AllsrvConnector.StationDestroyedEvent">
+            <summary>
+            Event fired when a StationDestroyed event is received from Allsrv
+            </summary>
+        </member>
+        <member name="E:FreeAllegiance.Tag.AllsrvConnector.TeamInfoChangedEvent">
+            <summary>
+            Event fired when a TeamInfoChanged event is received from Allsrv
+            </summary>
+        </member>
+        <member name="E:FreeAllegiance.Tag.AllsrvConnector.TerminateEvent">
+            <summary>
+            Event fired when a TeamInfoChanged event is received from Allsrv
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.AllsrvConnector.AllsrvServiceName">
+            <summary>
+            Retrieves the name of the Allsrv service, or null if it is not installed
+            </summary>
+        </member>
+        <member name="T:FreeAllegiance.Tag.Events.LobbyConnectedAGCEventArgs">
+            <summary>
+            Details of the Lobby Connected event
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Events.LobbyConnectedAGCEventArgs.#ctor(FreeAllegiance.Tag.AGCEventWrapper)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="agcEvent">The AGCEvent being thrown</param>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.LobbyConnectedAGCEventArgs.LobbyIP">
+            <summary>
+            The IP address of the lost lobby
+            </summary>
+        </member>
+        <member name="T:FreeAllegiance.Tag.Events.PlayerLoggedOutAGCEventArgs">
+            <summary>
+            Details of the Player LoggedOut event
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Events.PlayerLoggedOutAGCEventArgs.#ctor(FreeAllegiance.Tag.AGCEventWrapper)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="agcEvent">The AGCEvent being thrown</param>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.PlayerLoggedOutAGCEventArgs.PlayerID">
+            <summary>
+            The ID of the player who logged out (TargetID)
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.PlayerLoggedOutAGCEventArgs.PlayerName">
+            <summary>
+            The name of the player who logged out (TargetName)
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.PlayerLoggedOutAGCEventArgs.GameID">
+            <summary>
+            The ID of the game that the player left
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.PlayerLoggedOutAGCEventArgs.GameName">
+            <summary>
+            The name of the game that the player left
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.PlayerLoggedOutAGCEventArgs.BooterName">
+            <summary>
+            The name of the player who ejected the logged-out player (if any)
+            </summary>
+        </member>
+        <member name="T:FreeAllegiance.Tag.Events.PlayerJoinedTeamAGCEventArgs">
+            <summary>
+            Details of a Player Joined Team event
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Events.PlayerJoinedTeamAGCEventArgs.#ctor(FreeAllegiance.Tag.AGCEventWrapper)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="agcEvent">The AGCEvent being thrown</param>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.PlayerJoinedTeamAGCEventArgs.PlayerID">
+            <summary>
+            The ID of the player who joined a team (TargetID)
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.PlayerJoinedTeamAGCEventArgs.PlayerName">
+            <summary>
+            The name of the player who joined a team (TargetName)
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.PlayerJoinedTeamAGCEventArgs.GameID">
+            <summary>
+            The ID of the game where the player joined a team
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.PlayerJoinedTeamAGCEventArgs.TeamID">
+            <summary>
+            The ID of the team that was joined
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.PlayerJoinedTeamAGCEventArgs.TeamName">
+            <summary>
+            The name of the team that was joined
+            </summary>
+        </member>
+        <member name="T:FreeAllegiance.Tag.Events.PlayerLeftTeamAGCEventArgs">
+            <summary>
+            Details of the Player LeftTeam event
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Events.PlayerLeftTeamAGCEventArgs.#ctor(FreeAllegiance.Tag.AGCEventWrapper)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="agcEvent">The AGCEvent being thrown</param>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.PlayerLeftTeamAGCEventArgs.PlayerID">
+            <summary>
+            The ID of the player who logged in (TargetID)
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.PlayerLeftTeamAGCEventArgs.PlayerName">
+            <summary>
+            The name of the player who logged in (TargetName)
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.PlayerLeftTeamAGCEventArgs.GameID">
+            <summary>
+            The ID of the game where this player left a team
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.PlayerLeftTeamAGCEventArgs.TeamID">
+            <summary>
+            The ID of the team that was left
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.PlayerLeftTeamAGCEventArgs.TeamName">
+            <summary>
+            The name of the team that was left
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.PlayerLeftTeamAGCEventArgs.BooterName">
+            <summary>
+            The name of the player who ejected the logged-out player (if any)
+            </summary>
+        </member>
+        <member name="T:FreeAllegiance.Tag.Events.AdminPagedAGCEventDelegate">
+            <summary>
+            The delegate for a AdminPagedAGCEvent
+            </summary>
+        </member>
+        <member name="T:FreeAllegiance.Tag.Events.ChatMessageAGCEventDelegate">
+            <summary>
+            The delegate for a ChatMessageAGCEvent
+            </summary>
+        </member>
+        <member name="T:FreeAllegiance.Tag.Events.GameCreatedAGCEventDelegate">
+            <summary>
+            The delegate for a GameCreatedAGCEvent
+            </summary>
+        </member>
+        <member name="T:FreeAllegiance.Tag.Events.GameDestroyedAGCEventDelegate">
+            <summary>
+            The delegate for a GameDestroyedAGCEvent
+            </summary>
+        </member>
+        <member name="T:FreeAllegiance.Tag.Events.GameEndedAGCEventDelegate">
+            <summary>
+            The delegate for a GameEndedAGCEvent
+            </summary>
+        </member>
+        <member name="T:FreeAllegiance.Tag.Events.GameOverAGCEventDelegate">
+            <summary>
+            The delegate for a GameOverAGCEvent
+            </summary>
+        </member>
+        <member name="T:FreeAllegiance.Tag.Events.GameStartedAGCEventDelegate">
+            <summary>
+            The delegate for a GameStartedAGCEvent
+            </summary>
+        </member>
+        <member name="T:FreeAllegiance.Tag.Events.LobbyConnectedAGCEventDelegate">
+            <summary>
+            The delegate for a LobbyConnectedAGCEvent
+            </summary>
+        </member>
+        <member name="T:FreeAllegiance.Tag.Events.LobbyDisconnectedAGCEventDelegate">
+            <summary>
+            The delegate for a LobbyDisconnectedAGCEvent
+            </summary>
+        </member>
+        <member name="T:FreeAllegiance.Tag.Events.LobbyDisconnectingAGCEventDelegate">
+            <summary>
+            The delegate for a LobbyDisconnectingAGCEvent
+            </summary>
+        </member>
+        <member name="T:FreeAllegiance.Tag.Events.LobbyLostAGCEventDelegate">
+            <summary>
+            The delegate for a LobbyLostAGCEvent
+            </summary>
+        </member>
+        <member name="T:FreeAllegiance.Tag.Events.PlayerDroppedAGCEventDelegate">
+            <summary>
+            The delegate for a PlayerDroppedAGCEvent
+            </summary>
+        </member>
+        <member name="T:FreeAllegiance.Tag.Events.PlayerJoinedTeamAGCEventDelegate">
+            <summary>
+            The delegate for a PlayerJoinedTeamAGCEvent
+            </summary>
+        </member>
+        <member name="T:FreeAllegiance.Tag.Events.PlayerLeftTeamAGCEventDelegate">
+            <summary>
+            The delegate for a PlayerLeftTeamAGCEvent
+            </summary>
+        </member>
+        <member name="T:FreeAllegiance.Tag.Events.PlayerLoggedInAGCEventDelegate">
+            <summary>
+            The delegate for a PlayerLoggedInAGCEvent
+            </summary>
+        </member>
+        <member name="T:FreeAllegiance.Tag.Events.PlayerLoggedOutAGCEventDelegate">
+            <summary>
+            The delegate for a PlayerLoggedOutAGCEvent
+            </summary>
+        </member>
+        <member name="T:FreeAllegiance.Tag.Events.ShipKilledAGCEventDelegate">
+            <summary>
+            The delegate for a ShipKilledAGCEvent
+            </summary>
+        </member>
+        <member name="T:FreeAllegiance.Tag.Events.StationCapturedAGCEventDelegate">
+            <summary>
+            The delegate for a StationCapturedAGCEvent
+            </summary>
+        </member>
+        <member name="T:FreeAllegiance.Tag.Events.StationCreatedAGCEventDelegate">
+            <summary>
+            The delegate for a StationCreatedAGCEvent
+            </summary>
+        </member>
+        <member name="T:FreeAllegiance.Tag.Events.StationDestroyedAGCEventDelegate">
+            <summary>
+            The delegate for a StationDestroyedAGCEvent
+            </summary>
+        </member>
+        <member name="T:FreeAllegiance.Tag.Events.TeamInfoChangedAGCEventDelegate">
+            <summary>
+            The delegate for a TeamInfoChangedAGCEvent
+            </summary>
+        </member>
+        <member name="T:FreeAllegiance.Tag.Events.TerminateAGCEventDelegate">
+            <summary>
+            The delegate for a TerminateAGCEvent
+            </summary>
+        </member>
+        <member name="T:FreeAllegiance.Tag.Events.GameOverAGCEventArgs">
+            <summary>
+            Details of the Game Over event
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Events.GameOverAGCEventArgs.#ctor(FreeAllegiance.Tag.AGCEventWrapper)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="agcEvent">The AGCEvent being thrown</param>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.GameOverAGCEventArgs.GameID">
+            <summary>
+            The ID of the game that is over (TargetID)
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.GameOverAGCEventArgs.GameName">
+            <summary>
+            The name of the game that is over (TargetName)
+            </summary>
+        </member>
+        <member name="T:FreeAllegiance.Tag.AGCEventWrapper">
+            <summary>
+            BT - 4/16/2012 - ACSS / Mach
+            Passing an unwrapped __ComObject through a thread pool causes InvalidCastExcpetion under VS2010.
+            </summary>
+        </member>
+        <member name="T:FreeAllegiance.Tag.Events.GameCreatedAGCEventArgs">
+            <summary>
+            Details of the Game Created event
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Events.GameCreatedAGCEventArgs.#ctor(FreeAllegiance.Tag.AGCEventWrapper)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="agcEvent">The AGCEvent being thrown</param>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.GameCreatedAGCEventArgs.GameID">
+            <summary>
+            The ID of the created game (TargetID)
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.GameCreatedAGCEventArgs.GameName">
+            <summary>
+            The name of the created game (TargetName)
+            </summary>
+        </member>
+        <member name="T:FreeAllegiance.Tag.Events.AdminPagedAGCEventArgs">
+            <summary>
+            Details of the Admin Paged event
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Events.AdminPagedAGCEventArgs.#ctor(FreeAllegiance.Tag.AGCEventWrapper)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="agcEvent">The AGCEvent being thrown</param>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.AdminPagedAGCEventArgs.Callsign">
+            <summary>
+            The callsign who paged the admin
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.AdminPagedAGCEventArgs.GameID">
+            <summary>
+            The ID of the game where the page was sent from
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.AdminPagedAGCEventArgs.Message">
+            <summary>
+            The message that was paged
+            </summary>
+        </member>
+        <member name="T:FreeAllegiance.Tag.Events.LobbyDisconnectedAGCEventArgs">
+            <summary>
+            Details of the Lobby Disconnected event
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Events.LobbyDisconnectedAGCEventArgs.#ctor(FreeAllegiance.Tag.AGCEventWrapper)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="agcEvent">The AGCEvent being thrown</param>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Events.LobbyDisconnectedAGCEventArgs.LobbyIP">
+            <summary>
+            The IP address of the lost lobby
+            </summary>
+        </member>
+    </members>
+</doc>

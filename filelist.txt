@@ -1,0 +1,14 @@
+// TAG Filelist.
+// Specify Filename Version
+// Use "0" to ignore version check, but still transfer file
+TAG.exe 2.0.16
+TAGCore.dll 2.0.16
+GameLogger.dll 2.0.16
+AllsrvConnector.dll 2.0.16
+Common.dll 2.0.16
+changelog.txt 0
+readme.txt 0
+TagConfigTemplate.xml 0
+// AGMLib.dll 0
+// Interop.AGCLib.dll 0
+// Interop.ALLEGIANCESERVERLib.dll 0

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+	<!-- This section is required in order for the TAG config file to work properly -->
+	<configSections>
+		<section name="TagConfig" type="FreeAllegiance.Tag.TagConfigSectionHandler, Common" />
+	</configSections>
+	<TagConfig>
+		<!-- TAG: Required. Defines TAG's settings
+			UpdateTime: Required. The time (on the 24-hour clock) TAG should check for updates each day
+			ASGSURL: Optional. Overrides the default ASGS services URL with the one specified
+			POSTTIMEOUT: Optional. Overrides the default ASGS posting timeout of 100000ms with the one specified 
+			CSSUrl: Optional if not using CSS integration, otherwise required. Specify the URL of the CSS TAG Service here (http://asgs.alleg.net/css/Tag.svc)
+			useCss: Optional. If not specified, defaults to false. If set to true then data will be logged to CSS only. No data will be logged to ASGS.
+			-->
+		<TAG UpdateTime="5:00" ASGSUrl="http://asgs.alleg.net/asgs/services.asmx"  CSSUrl="https://localhost/CSSServer/Tag.svc" useCss="true" />
+		<!-- ReconnectTimer: Required. Specifies how often TAG will attempt to reconnect to Allsrv after
+						 losing the connection.
+			Interval: Required. The number of seconds between reconnect attempts
+			MaxRetries: Optional. Instructs TAG to stop attempting to reconnect to Allsrv after the specified amount of attempts.
+						TAG will shutdown after this many attempts have failed.-->
+		<ReconnectTimer Interval="60" MaxRetries="60" />
+		<!-- Log: Required. Specifies how TAG should log games as they finish. -->
+		<Log>
+			<!-- XmlFile: Optional. Specifies whether or not TAG should log games to XML files
+				Path: Required. The path of the folder where TAG should save games -->
+			<XmlFile Path="SavedGames" />
+		</Log>
+		<!-- Trace: Optional. Specifies whether or not any tracing should occur.
+			Level: Required. Specifies the level of trace output that should be shown [Off, Error, Warning, Info, Verbose]
+			Path: Optional. Specifies a relative path where the trace output should be written
+			ArchiveDir: Optional; Requires "Path". Specifies a relative path to a folder where trace files should be archived
+			Console: Optional. Specifies that trace output should be shown onscreen. Incompatible with Service mode.-->
+		<Trace Level="Verbose" Path="trace.txt" ArchiveDir="TraceFiles" Console="false" />
+		<!-- ServerAdmins: Optional. Specifies a list of callsigns who will be treated as an administrator regardless of administrative token or tag. -->
+		<ServerAdmins>
+			<!-- ServerAdmin: Required (at least one). Specifies the callsign of the player who will be treated as an administrator. -->
+			<ServerAdmin>Tigereye</ServerAdmin>
+		</ServerAdmins>
+	</TagConfig>
+</configuration>

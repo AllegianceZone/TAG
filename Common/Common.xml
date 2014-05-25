@@ -1,0 +1,279 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Common</name>
+    </assembly>
+    <members>
+        <member name="T:FreeAllegiance.Tag.Compression">
+            <summary>
+            A class that provides simple compress/decompress functionality
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Compression.Compress(System.String)">
+            <summary>
+            Compresses the specified string into a smaller one
+            </summary>
+            <param name="inputString">The string to compress</param>
+            <returns>The compressed string</returns>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Compression.Decompress(System.String)">
+            <summary>
+            Decompresses the specified string into the original string
+            </summary>
+            <param name="inputString">The compressed string</param>
+            <returns>The decompressed version of the specified string</returns>
+        </member>
+        <member name="T:FreeAllegiance.Tag.CallsignHelper">
+            <summary>
+            Provides help with interpreting callsigns
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.CallsignHelper.SetServerAdmins(System.Collections.ArrayList)">
+            <summary>
+            Provides the list of server admins for future verification
+            </summary>
+            <param name="serverAdmins">A list of server admins</param>
+        </member>
+        <member name="M:FreeAllegiance.Tag.CallsignHelper.GetAuthLevel(System.String)">
+            <summary>
+            Retrieves the authentication level of the specified callsign
+            </summary>
+            <param name="callsign">The callsign whose authentication should be parsed</param>
+            <returns>An AuthLevel value equivelant to the credentials shown with their tokens/tags</returns>
+        </member>
+        <member name="T:FreeAllegiance.Tag.HandledEventIDs">
+            <summary>
+            A list of all events handled by TAG
+            </summary>
+        </member>
+        <member name="T:FreeAllegiance.Tag.TagTrace">
+            <summary>
+            Provides runtime logging/tracing services
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.TagTrace.Initialize(System.Diagnostics.TraceLevel,System.String,System.String,System.Boolean,System.Windows.Forms.TextBox)">
+            <summary>
+            Initializes tracing with the specified settings
+            </summary>
+            <param name="initialTraceLevel">The initial level of Tracing of the application</param>
+            <param name="tracePath">The fully-qualified path (if not null) where the tracefile will be written</param>
+            <param name="archiveDir">The folder (if not null) where tracefiles will be archived each day</param>
+            <param name="traceConsole">Specifies whether or not to show messages in realtime</param>
+            <param name="traceTextbox">Specifies which textbox to write Trace messages to (if not null)</param>
+        </member>
+        <member name="M:FreeAllegiance.Tag.TagTrace.Uninitialize">
+            <summary>
+            Stops all trace output and releases resources
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.TagTrace.WriteLine(System.Diagnostics.TraceLevel,System.String,System.Object[])">
+            <summary>
+            Writes the specified text with the specified formatting to the trace file
+            </summary>
+            <param name="traceLevel">The Level at which this line should be written</param>
+            <param name="format">The format string for the line to be written</param>
+            <param name="objects">The objects to format before being written</param>
+        </member>
+        <member name="M:FreeAllegiance.Tag.TagTrace.WriteLine(System.Diagnostics.TraceLevel,System.String)">
+            <summary>
+            Writes the specified text to the trace file
+            </summary>
+            <param name="traceLevel">The Level at which this line should be written</param>
+            <param name="text">The text to be written</param>
+        </member>
+        <member name="M:FreeAllegiance.Tag.TagTrace.ArchiveTracefile">
+            <summary>
+            Archives the TraceFile according to the archive settings
+            </summary>
+        </member>
+        <member name="T:FreeAllegiance.Tag.TagServiceController">
+            <summary>
+            Controls the TAG and Allsrv services
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.TagServiceController.IsAllsrvServiceStarted">
+            <summary>
+            Checks to see if the Allsrv service is started (if instlled)
+            </summary>
+            <returns>True if Allsrv is started in service mode, false if not</returns>
+        </member>
+        <member name="M:FreeAllegiance.Tag.TagServiceController.IsTagServiceStarted">
+            <summary>
+            Checks to see if the TAG service is started (if instlled)
+            </summary>
+            <returns>True if TAG is started in service mode, false if not</returns>
+        </member>
+        <member name="M:FreeAllegiance.Tag.TagServiceController.StartAllsrvService">
+            <summary>
+            Starts the Allsrv Service (if installed)
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.TagServiceController.StopAllsrvService">
+            <summary>
+            Stops the Allsrv Service (if installed)
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.TagServiceController.StartTagService">
+            <summary>
+            Starts the TAG Service (if installed)
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.TagServiceController.StopTagService">
+            <summary>
+            Stops the TAG Service (if installed)
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.TagServiceController.LookupAllsrvService">
+            <summary>
+            Looks up the Allsrv Service
+            </summary>
+            <returns>The Allsrv servicecontroller (if found)</returns>
+        </member>
+        <member name="M:FreeAllegiance.Tag.TagServiceController.LookupTagService">
+            <summary>
+            Looks up the TAG Service
+            </summary>
+            <returns>The TAG servicecontroller (if found)</returns>
+        </member>
+        <member name="P:FreeAllegiance.Tag.TagServiceController.AllsrvService">
+            <summary>
+            Retrieves the Allsrv service, looking it up if necessary
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.TagServiceController.AllsrvServiceName">
+            <summary>
+            Retrieves the name of the Allsrv Service
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.TagServiceController.TagService">
+            <summary>
+            Retrieves the TAG service, looking it up if necessary
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.TagServiceController.TagServiceName">
+            <summary>
+            Retrieves the name of the TAG Service
+            </summary>
+        </member>
+        <member name="T:FreeAllegiance.Tag.TagConfigSectionHandler">
+            <summary>
+            Parses the TagConfig configuration file section into an TagConfig object
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.TagConfigSectionHandler.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.TagConfigSectionHandler.Create(System.Object,System.Object,System.Xml.XmlNode)">
+            <summary>
+            Creates the TagConfig object
+            </summary>
+            <param name="parent">The parent node of the configuration file</param>
+            <param name="configContext">The context of the node</param>
+            <param name="section">The root node of the config file section being parsed</param>
+            <returns>An TagConfig object encapsulating all settings defined in the specified configuration file section</returns>
+        </member>
+        <member name="T:FreeAllegiance.Tag.TagConfig">
+            <summary>
+            Encapsulates TAG's configuration settings
+            </summary>
+        </member>
+        <member name="F:FreeAllegiance.Tag.TagConfig.DEFAULTCSSURL">
+            <summary>
+            The default URL for ACSS's services
+            </summary>
+        </member>
+        <member name="F:FreeAllegiance.Tag.TagConfig.DEFAULTASGSURL">
+            <summary>
+            The default URL for ASGS's services
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.TagConfig.#ctor">
+            <summary>
+            Default hidden constructor
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.TagConfig.ParseXml(System.Xml.XmlNode)">
+            <summary>
+            Parses Xml configuration data into an instance of TagConfig
+            </summary>
+            <param name="root">The root Xml node of the configuration section</param>
+        </member>
+        <member name="M:FreeAllegiance.Tag.TagConfig.Save(System.String)">
+            <summary>
+            Saves the specified configuration settings to the specified path
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.TagConfig.UpdateTime">
+            <summary>
+            The date/time of the next Update check
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.TagConfig.SkipUpdates">
+            <summary>
+            When set to true, TAG will not get updates from the central source. 
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.TagConfig.AsgsUrl">
+            <summary>
+            The Url to the ASGS web services
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.TagConfig.CssUrl">
+            <summary>
+            The Url to the CSS web services
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.TagConfig.UseCss">
+            <summary>
+            If this flag is set, then stats are delivered to CSS instead of to ASGS.
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.TagConfig.PostTimeout">
+            <summary>
+            The timeout value (in milliseconds) for ASGS posts
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.TagConfig.ReconnectInterval">
+            <summary>
+            The amount of seconds between reconnect attempts
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.TagConfig.MaxRetries">
+            <summary>
+            The maximum amount of reconnects to attempt before stopping TAG
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.TagConfig.XmlPath">
+            <summary>
+            The path to a folder where Xml Gamelogs are stored, or null for no Xml gamelogging
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.TagConfig.TraceLevel">
+            <summary>
+            The level of tracing to be output
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.TagConfig.TracePath">
+            <summary>
+            The path to a file where Trace messages should be written, or null for no tracelog
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.TagConfig.TraceArchiveDir">
+            <summary>
+            The path to a folder where tracefiles are archived, or null for no archiving
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.TagConfig.TraceConsole">
+            <summary>
+            Indicates whether or not tracing should be output to the current console window
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.TagConfig.ServerAdmins">
+            <summary>
+            A list of callsigns who will be treated as administrators even without an administrative token or tag
+            </summary>
+        </member>
+    </members>
+</doc>

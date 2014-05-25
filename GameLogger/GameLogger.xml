@@ -1,0 +1,403 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>GameLogger</name>
+    </assembly>
+    <members>
+        <member name="T:FreeAllegiance.Tag.XmlLogger">
+            <summary>
+            Persists a completed game to Xml
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.XmlLogger.Initialize(System.String)">
+            <summary>
+            Initializes the XmlLogging to the specified folder
+            </summary>
+            <param name="path">The path to the folder where GameLogs should be stored</param>
+        </member>
+        <member name="M:FreeAllegiance.Tag.XmlLogger.LogGame(FreeAllegiance.Tag.GameData,System.Int32)">
+            <summary>
+            Logs the specified game to an Xml file in the configured folder
+            </summary>
+            <param name="game">The Xml text of the game to log</param>
+            <param name="gameID">The ID of the game if known</param>
+        </member>
+        <member name="T:FreeAllegiance.Tag.GameData">
+            <summary>
+            All the events captured during a game
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.GameData.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.GameData.#ctor(System.String,System.String,System.String,System.Boolean,System.Boolean,System.Boolean,System.Int32,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Int32,System.Single,System.Single,System.Int32,System.DateTime,System.DateTime)">
+            <summary>
+            Full Constructor
+            </summary>
+            <param name="gameName">The name of this game as listed in the Lobby</param>
+            <param name="coreFile">The name of the corefile in use</param>
+            <param name="mapName">The name of the map in play</param>
+            <param name="squadGame">Specifies that this is a squad game</param>
+            <param name="conquest">Specifies that this game has a Conquest win condition</param>
+            <param name="deathmatch">Specifies that this game has a Deathmatch win condition</param>
+            <param name="deathmatchGoal">Specifies the goal for this deathmatch game</param>
+            <param name="friendlyFire">Specifies that players can damage their own team's players and  bases</param>
+            <param name="revealMap">Specifies that the map was revealed at the start of the game</param>
+            <param name="allowDevelopment">Specifies that new technology can be researched</param>
+            <param name="allowShipyards">Specifies that Shipyards can be purchased</param>
+            <param name="allowDefections">Specifies that players can change teams</param>
+            <param name="InvulnerableStations">Specifies that bases can never be destroyed</param>
+            <param name="statsCount">Specifies whether or not stats counted for this game</param>
+            <param name="maxImbalance">The maximum team player imbalance that will be enforced</param>
+            <param name="startingMoney">A modifier for the amount of money given to teams at the start</param>
+            <param name="totalMoney">A modifier for the total amount of money available on the map</param>
+            <param name="resources">The resources setting, detailing which techrocks are available and where</param>
+            <param name="startTime">The time this game begun</param>
+            <param name="endTime">The time this game ended</param>
+        </member>
+        <member name="M:FreeAllegiance.Tag.GameData.Dispose">
+            <summary>
+            Disposes of this GameData
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.GameData.Reset">
+            <summary>
+            Resets the current game, wiping all events and adding a default game
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.GameData.Initialize(System.String,System.String,System.String,System.Boolean,System.Boolean,System.Boolean,System.Int32,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Int32,System.Single,System.Single,System.Int32,System.DateTime,System.DateTime)">
+            <summary>
+            Wipes the gamedata and creates a new game with the specified settings
+            </summary>
+            <param name="gameName">The name of this game as listed in the Lobby</param>
+            <param name="coreFile">The name of the corefile in use</param>
+            <param name="mapName">The name of the map in play</param>
+            <param name="squadGame">Specifies that this is a squad game</param>
+            <param name="conquest">Specifies that this game has a Conquest win condition</param>
+            <param name="deathmatch">Specifies that this game has a Deathmatch win condition</param>
+            <param name="deathmatchGoal">Specifies the goal for this deathmatch game</param>
+            <param name="friendlyFire">Specifies that players can damage their own team's players and  bases</param>
+            <param name="revealMap">Specifies that the map was revealed at the start of the game</param>
+            <param name="allowDevelopment">Specifies that new technology can be researched</param>
+            <param name="allowShipyards">Specifies that Shipyards can be purchased</param>
+            <param name="allowDefections">Specifies that players can change teams</param>
+            <param name="invulnerableStations">Specifies that bases can never be destroyed</param>
+            <param name="statsCount">Specifies whether or not stats counted for this game</param>
+            <param name="maxImbalance">The maximum team player imbalance that will be enforced</param>
+            <param name="startingMoney">A modifier for the amount of money given to teams at the start</param>
+            <param name="totalMoney">A modifier for the total amount of money available on the map</param>
+            <param name="resources">The resources setting, detailing which techrocks are available and where</param>
+            <param name="startTime">The time this game begun</param>
+            <param name="endTime">The time this game ended</param>
+        </member>
+        <member name="M:FreeAllegiance.Tag.GameData.InitializeTeamCount(System.Int32)">
+            <summary>
+            Wipes all teams and adds the specified number of blank teams
+            </summary>
+            <param name="teamCount">The number of blank teams to create</param>
+        </member>
+        <member name="M:FreeAllegiance.Tag.GameData.InitializeTeam(System.Int32,System.String,System.String,System.String)">
+            <summary>
+            Sets the specified team's name, faction, and commander
+            </summary>
+            <param name="teamNumber">The index of the team to initialize</param>
+            <param name="teamName">The name of the team being initialized</param>
+            <param name="teamFaction">The team's faction</param>
+            <param name="teamCommander">The team's commander</param>
+        </member>
+        <member name="M:FreeAllegiance.Tag.GameData.AddTeamMember(System.String,System.Int32,System.DateTime)">
+            <summary>
+            Adds the specified player to the team with default join/leave times
+            </summary>
+            <param name="callsign">The callsign of the player to add</param>
+            <param name="teamIndex">The index of the team</param>
+            <param name="startTime">The time this player joined the team</param>
+        </member>
+        <member name="M:FreeAllegiance.Tag.GameData.GetDataset">
+            <summary>
+            Retrieves this game's dataset
+            </summary>
+            <returns>The dataset for this game</returns>
+        </member>
+        <member name="M:FreeAllegiance.Tag.GameData.LogAdminPage(System.DateTime,System.String,System.String)">
+            <summary>
+            Logs an admin page with the specified parameters to this game's dataset
+            </summary>
+            <param name="time">The time the admin was paged</param>
+            <param name="speakerName">The name of the player paging the admin</param>
+            <param name="message">The message sent to the admin</param>
+        </member>
+        <member name="M:FreeAllegiance.Tag.GameData.TagGame(System.DateTime,System.String,System.String)">
+            <summary>
+            Tags this game with the specified name
+            </summary>
+            <param name="time">The time this game was tagged</param>
+            <param name="speakerName">The callsign of the player who tagged this game</param>
+            <param name="tagName">The name of the tag</param>
+        </member>
+        <member name="M:FreeAllegiance.Tag.GameData.LogChatMessage(System.DateTime,System.Int32,System.String,System.Int32,System.String,System.Int32,System.Int32,System.String)">
+            <summary>
+            Logs a chat message with the specified parameters to this game's dataset
+            </summary>
+            <param name="time">The time this chat message occurred</param>
+            <param name="speakerID">The ID of the speaker within Allsrv</param>
+            <param name="speakerName">The name of the player or drone who sent this message</param>
+            <param name="recipientID">The ID of the recipient within Allsrv</param>
+            <param name="recipientName">The name of the recipient player or drone</param>
+            <param name="commandID">The ID of the command associated with this chat message (if any)</param>
+            <param name="voiceID">The ID of the voicechat associated with this chat message (if any)</param>
+            <param name="text">The contents of the message</param>
+        </member>
+        <member name="M:FreeAllegiance.Tag.GameData.LogGameEnded(System.DateTime,System.Int32,System.String,System.String)">
+            <summary>
+            Logs a game ended message to this game's dataset
+            </summary>
+            <param name="time">The time this game ended</param>
+            <param name="winningTeamID">The ID of the winning team</param>
+            <param name="winningTeamName">The name of the winning team</param>
+            <param name="gameEndedReason">The reason that the game has ended</param>
+        </member>
+        <member name="M:FreeAllegiance.Tag.GameData.LogGameStarted(System.DateTime)">
+            <summary>
+            Logs a game start to this game's dataset
+            </summary>
+            <param name="time">The time this game started</param>
+        </member>
+        <member name="M:FreeAllegiance.Tag.GameData.LogLobbyConnected(System.DateTime,System.String)">
+            <summary>
+            Logs a lobby connected message to this game's dataset
+            </summary>
+            <param name="time">The time the lobby was connected</param>
+            <param name="lobbyIP">The IP address of the connected lobby</param>
+        </member>
+        <member name="M:FreeAllegiance.Tag.GameData.LogLobbyDisconnecting(System.DateTime,System.String)">
+            <summary>
+            Logs an attempt at disconnecting from the lobby to this game's dataset
+            </summary>
+            <param name="time">The time the server started to disconnect from the lobby</param>
+            <param name="lobbyIP">The IP address of the lobby being disconnected</param>
+        </member>
+        <member name="M:FreeAllegiance.Tag.GameData.LogLobbyDisconnected(System.DateTime,System.String)">
+            <summary>
+            Logs a lobby disconnect to this game's dataset
+            </summary>
+            <param name="time">The time the lobby was disconnected</param>
+            <param name="lobbyIP">The IP address of the disconnected lobby</param>
+        </member>
+        <member name="M:FreeAllegiance.Tag.GameData.LogLobbyLost(System.DateTime)">
+            <summary>
+            Logs a dropped lobby event to this game's dataset
+            </summary>
+            <param name="time">The time the lobby connection was detected as lost</param>
+        </member>
+        <member name="M:FreeAllegiance.Tag.GameData.LogPlayerDropped(System.DateTime,System.String)">
+            <summary>
+            Logs a dropped player event to this game's dataset
+            </summary>
+            <param name="time">The time the player was detected as dropped from the server</param>
+            <param name="playerName">The name of the player that was dropped</param>
+        </member>
+        <member name="M:FreeAllegiance.Tag.GameData.LogPlayerJoinedTeam(System.DateTime,System.Int32,System.String,System.Int32,System.String)">
+            <summary>
+            Logs a player joining a team to this game's dataset
+            </summary>
+            <param name="time">The time this player joined the team</param>
+            <param name="playerID">The ID of the player joining the team</param>
+            <param name="playerName">The name of the player joining the team</param>
+            <param name="teamID">The ID of the team being joined</param>
+            <param name="teamName">The name of the team being joined</param>
+        </member>
+        <member name="M:FreeAllegiance.Tag.GameData.LogPlayerLeftTeam(System.DateTime,System.Int32,System.String,System.Int32,System.String,System.String)">
+            <summary>
+            Logs a player leaving a team to this game's dataset
+            </summary>
+            <param name="time">The time this player left the team</param>
+            <param name="playerID">The ID of the player leaving the team</param>
+            <param name="playerName">The name of the player leaving the team</param>
+            <param name="teamID">The ID of the team that was left</param>
+            <param name="teamName">The name of the team that was left</param>
+            <param name="booterName">The name of the player who ejected this player from his team, or NULL if the player left on their own</param>
+        </member>
+        <member name="M:FreeAllegiance.Tag.GameData.LogPlayerLoggedIn(System.DateTime,System.Int32,System.String)">
+            <summary>
+            Logs a player joining a game
+            </summary>
+            <param name="time">The time this player joined the game</param>
+            <param name="playerID">The ID of the player joining the game</param>
+            <param name="playerName">The name of the player joining the game</param>
+        </member>
+        <member name="M:FreeAllegiance.Tag.GameData.LogPlayerLoggedOut(System.DateTime,System.Int32,System.String,System.String)">
+            <summary>
+            Logs a player leaving a game
+            </summary>
+            <param name="time">The time this player left the game</param>
+            <param name="playerID">The ID of the player who left the game</param>
+            <param name="playerName">The name of the player who left the game</param>
+            <param name="booterName">The name of the player who #banned this player from the game, or NULL if they left on their own</param>
+        </member>
+        <member name="M:FreeAllegiance.Tag.GameData.LogShipKilled(System.DateTime,System.Int32,System.String,System.String,System.Int32,System.String,System.String,System.String,System.Int32)">
+            <summary>
+            Logs a ship destruction to this game's dataset
+            </summary>
+            <param name="time">The time this ship was killed</param>
+            <param name="killedID">The ID of the killed ship's pilot</param>
+            <param name="killedName">The name of the killed ship's pilot</param>
+            <param name="killedPosition">A vector including the X,Y,Z coordinates of the ship when killed</param>
+            <param name="killerID">The ID of the ship who destroyed this one</param>
+            <param name="killerName">The name of the pilot of the ship that destroyed this ship</param>
+            <param name="killerPosition">A vector including the X,Y,Z coordinates of the ship that killed this one</param>
+            <param name="amount">The time taken to kill this ship</param>
+            <param name="isLifepod">1 if this ship was a lifepod, 0 if it was not</param>
+        </member>
+        <member name="M:FreeAllegiance.Tag.GameData.LogStationCaptured(System.DateTime,System.Int32,System.String,System.Int32,System.String,System.String)">
+            <summary>
+            Logs a station capture to this game's dataset
+            </summary>
+            <param name="time">The time this station was captured</param>
+            <param name="capturerID">The ID of the ship that did the capturing</param>
+            <param name="capturerName">The name of the pilot who performed the base capture</param>
+            <param name="teamID">The ID of the team who lost their station</param>
+            <param name="teamName">The name of the team that lost their station</param>
+            <param name="stationName">The name of the captured station</param>
+        </member>
+        <member name="M:FreeAllegiance.Tag.GameData.LogStationCreated(System.DateTime,System.Int32,System.String,System.String)">
+            <summary>
+            Logs a station creation to this game's dataset
+            </summary>
+            <param name="time">The time this station was created</param>
+            <param name="teamID">The ID of the team that created this station</param>
+            <param name="teamName">The name of the team that created this station</param>
+            <param name="stationName">The name of the created station</param>
+        </member>
+        <member name="M:FreeAllegiance.Tag.GameData.LogStationDestroyed(System.DateTime,System.Int32,System.String,System.Int32,System.String,System.String)">
+            <summary>
+            Logs a station destruction to this game's dataset
+            </summary>
+            <param name="time">The time this station was destroyed</param>
+            <param name="destroyerID">The ID of the player who destroyed this station</param>
+            <param name="destroyerName">The name of the player who destroyed this station</param>
+            <param name="teamID">The ID of the team that lost their station</param>
+            <param name="teamName">The name of the team that lost their station</param>
+            <param name="stationName">The name of the destroyed station</param>
+        </member>
+        <member name="M:FreeAllegiance.Tag.GameData.LogTeamInfoChanged(System.DateTime,System.Int32,System.String,System.String)">
+            <summary>
+            Logs a team info change to this game's dataset
+            </summary>
+            <param name="time">The time this team changed their info</param>
+            <param name="teamID">The ID of the team that changed its info</param>
+            <param name="oldTeamName">The Team's old name</param>
+            <param name="newTeamName">The new name for the team</param>
+        </member>
+        <member name="P:FreeAllegiance.Tag.GameData.GameRow">
+            <summary>
+            Retrieves this game's row from the dataset
+            </summary>
+        </member>
+        <member name="T:FreeAllegiance.Tag.GameLogger">
+            <summary>
+            Stores completed game logs according to the user's settings
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.GameLogger.Initialize(System.String)">
+            <summary>
+            Initializes game logging with the specified settings
+            </summary>
+            <param name="xmlPath">The path to a folder where game XML files will be written, or null if no logging</param>
+        </member>
+        <member name="M:FreeAllegiance.Tag.GameLogger.Uninitialize">
+            <summary>
+            Uninitializes all loggers
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.GameLogger.LogGame(FreeAllegiance.Tag.GameData,System.Int32)">
+            <summary>
+            Logs the specified game to the destinations specified in the config file
+            </summary>
+            <param name="game">The gamedata to log</param>
+            <param name="gameID">ASGS's ID of this game</param>
+        </member>
+        <member name="T:FreeAllegiance.Tag.GameDataset">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:FreeAllegiance.Tag.GameDataset.GameDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:FreeAllegiance.Tag.GameDataset.TeamDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:FreeAllegiance.Tag.GameDataset.GameEventDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:FreeAllegiance.Tag.GameDataset.TeamMemberDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:FreeAllegiance.Tag.GameDataset.ChatLogDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:FreeAllegiance.Tag.GameDataset.GameRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:FreeAllegiance.Tag.GameDataset.TeamRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:FreeAllegiance.Tag.GameDataset.GameEventRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:FreeAllegiance.Tag.GameDataset.TeamMemberRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:FreeAllegiance.Tag.GameDataset.ChatLogRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:FreeAllegiance.Tag.GameDataset.GameRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:FreeAllegiance.Tag.GameDataset.TeamRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:FreeAllegiance.Tag.GameDataset.GameEventRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:FreeAllegiance.Tag.GameDataset.TeamMemberRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:FreeAllegiance.Tag.GameDataset.ChatLogRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+    </members>
+</doc>

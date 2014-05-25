@@ -1,0 +1,130 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TAG</name>
+    </assembly>
+    <members>
+        <member name="T:FreeAllegiance.Tag.TagService">
+            <summary>
+            The Tag Windows Service
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.TagService.#ctor">
+            <summary>
+            Default Constructor
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.TagService.StartService">
+            <summary>
+            The main entry point for the service
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.TagService.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.TagService.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.TagService.OnStart(System.String[])">
+            <summary>
+            Set things in motion so your service can do its work.
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.TagService.OnStop">
+            <summary>
+            Stop this service.
+            </summary>
+        </member>
+        <member name="T:FreeAllegiance.Tag.Tag">
+            <summary>
+            Tigereye's Allegiance Gizmo
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Tag.DisableConsoleLineInputMode">
+            <summary>
+            Disables the "EnableLineInput" flag for the Console.Read() method
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Tag.Main(System.String[])">
+            <summary>
+            Main entry point of the application
+            </summary>
+            <param name="args">Commandline arguments</param>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Tag.Start">
+            <summary>
+            Starts TAG up: Pings ASGS, connects to Allsrv, and starts logging games.
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Tag.LoadConfiguration">
+            <summary>
+            Reads the config file and initializes tracing and logging
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Tag.DoStart">
+            <summary>
+            Performs the startup operations necessary to make TAG log Allsrv events
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Tag.ReconnectShutdown(System.IAsyncResult)">
+            <summary>
+            Shuts down TAG after receiving the reconnect "Shutdown" event
+            </summary>
+            <param name="ar"></param>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Tag.Stop">
+            <summary>
+            Disconnects from allsrv, logs games that were in progress and shuts down TAG.
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Tag.CheckForUpdates(System.Object)">
+            <summary>
+            Checks for updates to TAG
+            </summary>
+            <param name="info">Additional info used by the Update timer (null)</param>
+        </member>
+        <member name="M:FreeAllegiance.Tag.Tag.PerformUpdate(System.Object,System.EventArgs)">
+            <summary>
+            Performs the TAG update
+            </summary>
+            <param name="sender">The object that raised this event</param>
+            <param name="e">The event arguments</param>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Tag.Config">
+            <summary>
+            Retrieves the current configuration file
+            </summary>
+        </member>
+        <member name="P:FreeAllegiance.Tag.Tag.Build">
+            <summary>
+            The build number of TAG
+            </summary>
+        </member>
+        <member name="T:FreeAllegiance.Tag.ServiceInstaller">
+            <summary>
+            Installs and uninstalls Windows Services
+            </summary>
+        </member>
+        <member name="M:FreeAllegiance.Tag.ServiceInstaller.InstallService(System.String,System.String,System.String,System.String)">
+            <summary>
+            This method installs and runs the service in the service conrol manager.
+            </summary>
+            <param name="svcPath">The complete path of the service.</param>
+            <param name="svcName">Name of the service.</param>
+            <param name="svcDispName">Display name of the service.</param>
+            <param name="svcDependancies">The service(s) this new service depends on</param>
+            <returns>True if the process went thro successfully. False if there was any error.</returns>
+        </member>
+        <member name="M:FreeAllegiance.Tag.ServiceInstaller.UninstallService(System.String)">
+            <summary>
+            This method uninstalls the service from the service conrol manager.
+            </summary>
+            <param name="svcName">Name of the service to uninstall.</param>
+        </member>
+    </members>
+</doc>

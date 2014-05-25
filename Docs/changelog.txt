@@ -1,0 +1,165 @@
+v2.0.16
+-------
+- BT - Added CSS integration and new config options, fixed VS2010 related COM error.
+
+v2.0.15
+-------
+- Fixed bug where StationCreated events were being recorded as StationCaptured events. (Thanks to notjarvis and pkk)
+
+v2.0.14
+-------
+- Added a "ServerAdmins" element (with ServerAdmin sub-elements) to the configuration file to allow administrators to specify
+	a list of callsigns that will be treated by TAG as admins regardless of token or tag.
+- Administrators/ServerAdmins can now force updates even when there are games in progress.
+	Previously, TAG prevented updates if any game was in progress regardless of who issued the command.
+
+v2.0.13
+-------
+- Added a "PostTimeout" attribute to the "TAG" element in the configuration file to allow administrators to override the ASGS
+	posting timeout (in milliseconds). The default value is 100000
+
+v2.0.12
+-------
+- Changed some INFO logmessages to VERBOSE to clean up INFO-logging
+- Chats sent from constructors are now ignored (miners/drones always say "Affirmative" and never deny the order anyways!)
+
+v2.0.11
+-------
+- Fixed bug where TAG ignored stats from even-numbered teams (oops. This was due to the interop changes in b10)
+
+v2.0.10
+-------
+- TAG now uses references to interfaces instead of objects as required by VC8 interop. (R3 Crash bug fixed :D)
+- Fixed bug where the 1st logged game's name/settings were not listed properly in the logs
+
+v2.0.9
+------
+- TAG now reports valid command-line arguments when an invalid command-line argument is typed
+- TAG now properly sends HQ chats (without a voicechat ID)
+
+v2.0.8
+------
+- TAG now logs the StatsCount game setting
+- All teamboots and lobbybans are now broadcast on all by HQ
+
+v2.0.7
+------
+- TAG should no longer leave players out of a game.
+- Fixed bug where some teammember durations were -3bajillion
+
+v2.0.6
+------
+- TAG now ignores joining/leaving NOAT. This may have fixed the 0min duration bug
+- Optimized the way TAG calculates event time
+- Made each event handler lock the game earlier in the thread to help the handlers finish chronologically
+
+v2.0.5
+------
+- Fixed bug where the GameName was recorded as booter instead of the player who typed #ban
+- Fixed logging of errors in AllsrvConnector's OnEvent() method
+- Fixed bug where wrong TeamID was maintained in local list
+- Fixed bug where #bans weren't recorded when a game was not in progress
+
+v2.0.4
+------
+- Fixed bug where tracefiles weren't archived properly at midnight causing TAG to fail processing any subsequent events the next day
+- Fixed bug where teammember durations were sometimes longer than true time on team (and maybe -35791394 min. too ;))
+- Added details to some error messages to help track inconsistent errors
+
+v2.0.3
+------
+- Fixed bug where games would draw when a team had an & in the team name
+- TAG will now check for updates after each game ends if no other games are in progress.
+- TAG will now exit with an error message if the config file contains errors
+- Removed Debug element from config file.
+
+v2.0.2
+------
+- Fixed bug where games with teams that had ' characters in the teamname always drew
+- "Admin:" now replies with a failure message if a #restricted command is attempted by a non-privileged user
+- Added logging to help track down PlayerDropped "Object reference not set to instance of object" errors (which cause some players to have gametime recorded incorrectly)
+- Added logging to help track down PlayerJoined/PlayerLeft "index out of bounds" errors (which cause some players to not be listed in playerlist)
+- Added logging to help track down StationCreated and StationDestroyed "cast not valid" errors (which cause these events to sometimes not be recorded)
+- Fixed bug where "Console=false" setting in Trace element didn't stop TAG from outputting to the console (oops) 	** This fix introduced a bug which was fixed in 2.0.4 **
+
+v2.0.1
+------
+- TAG now reports the build number at startup instead of revision number (Revisions are repo checkouts, not actual 'versions')
+- Fixed bug in logging chats targetted at ""
+- Fixed 0min teammember bug when games are in progress while TAG is starting up.
+- Fixed bug where games counted as draws when they ended by a station capture or destruction
+- TAG releases are now identified by build#, not revision#. The revision is the repository revision of the checkout used to build the executable.
+
+v2.0.0.44
+---------
+- Changed the way TAG looks up its service
+
+v2.0.0.43
+---------
+- Ensured that GameOver events fire after GameEnded preventing game time bugs.
+
+v2.0.0.42
+---------
+- Fixed bug in looking up services that prevented TAG from shutting itself down
+- GameEnded now locks the game's data sooner to resolve bug where games have same starttime and endtime
+
+v2.0.0.41
+---------
+- Fixed bug where "build 0" was shown when TAG started up (oops)
+- Fixed bug where TAG wouldn't autoupdate itself upon startup
+
+v2.0.0.40
+---------
+- Added revision to #version command
+
+v2.0.0.39
+---------
+- Teammember durations are now recorded in seconds, not minutes (oops!)
+
+v2.0.0.38
+---------
+- TAG gets cool icons :) Thanks Pook!
+
+v2.0.0.37
+---------
+- Removed "GameReporting" setting because it promotes stacking
+- Removed StartAllsrv settings from config file since AGCLib auto-starts allsrv anyways even when we don't want it
+- Removed remaining SQL Logging code
+- Fixed bug with R1 server where games ending with a capture were not credited correctly
+
+v2.0.0.36
+---------
+- Centralized all service control into a single new class in Common to remove duplcate code
+- Added "ReconnectTimer" element to config file which controls how often TAG will attempt to reconnect to Allsrv
+- Reorganized config file settings. Update/StartAllsrv/asgs are now in TAG element.
+- Added a "GameReporting" setting to report station builds/caps/kills via HQ(all) chats.
+- SVN version# is now the revision number of the Version instead of the build number.
+
+v2.0.35
+-------
+- Podkills are no longer logged (duh)
+- Dying on caltrops should now be logged
+- Fixed bugs with build/capture/destroy stations in R1
+- #tagging games is now restricted to allegs/admins
+- Fixed bug with retrieving teamname during GameEnded event on R1 servers
+- R1 servers now report "Unknown station" if the stationname cannot be retrieved from the event
+- Removed #smite function
+- When installing TAG as a service, TAG now detects the allsrv service name (if any) and adds it as a TAG dependency
+
+v2.0.34
+-------
+- #hq now sends adminchat to all games on server. #hqgame sends adminchat to current game
+- GameEnded should now assign winning team in FAZ R1 or FAZ R2. It parses "Description" text in FAZR1 or earlier for the winning teamname.
+- Added secret tester function ;)
+
+v2.0.33
+-------
+- TAGService is no longer dependant upon allsrv, and will install/uninstall regardless of allsrv
+- TAG will now detect Allsrv OR Allsrv32 as a service when starting up
+- Startup update check now ignores txt file changes
+- Added #hq adminpage to speak as HQ. This is restricted to users with ? or + tokens, or @HQ or @Alleg tags ingame.
+- When updating, filelist.txt-parsing will now ignore lines that begin with //
+
+v2.0.32
+-------
+-First alpha test
